@@ -9,7 +9,9 @@ export default class Register extends Component {
     this.state = {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      nombre: "",
+      perfil: "",
     }
   }
 
@@ -33,6 +35,19 @@ export default class Register extends Component {
             onChangeText={(text) => this.setState({email: text})}
             value = {this.state.email}
           />
+            <TextInput 
+            style = {styles.input}
+            onChangeText={ (text) => this.setState({ nombre: text})}
+            placeholder = "Ingresar nombre de usuario"
+            value= {this.state.mail}
+            />
+            
+              <TextInput 
+            style = {styles.input}
+            onChangeText={ (text) => this.setState({ perfil: text})}
+            placeholder = "Descripcion de tu perfil"
+            value= {this.state.mail}
+            />
           <TextInput 
             style = {styles.input}
             keyboardType = "default"
@@ -46,7 +61,7 @@ export default class Register extends Component {
 
         <View>
           <TouchableOpacity onPress={() => this.register(this.state.email, this.state.password)} style = {styles.boton}>
-            <Text style = {styles.botonColor}>Register</Text>
+            <Text >Register</Text>
           </TouchableOpacity>
         </View>
 
@@ -69,28 +84,56 @@ export default class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    marginTop: 20,
+    marginTop: 0,
+  },
+  palabra:{
+    flexDirection: 'row',
+   backgroundColor: '#D6E6D9',
+   textAlign: "center",
+   margin: 20,
+   fontFamily:"times new roman",
+   fontSize:40,
+   
+
+   
   },
   input: {
-    height: 20,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
+   
+    fontSize: 18,
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20, 
+    fontWeight: '600',
+    paddingLeft: 20,
     borderWidth: 1,
-    borderColor: "#ccc",
-    borderStyle: 'solid',
-    marginVertical: 10
+    borderRadius: 7,
+    paddingRight: 12,
   },
-  boton:{
-    backgroundColor: "#28a745",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    textAlign: "center",
+  registro: {
+    backgroundColor: '#D13945',
+    marginLeft: 30,
+    marginTop: 20,
+    marginBottom: 20,
+     width: 90,
+    fontWeight: '600',
+    paddingLeft: 15,
     borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: "#28a745"
+    borderRadius: 7,
+  },
+
+  boton:{
+    
   },
   botonColor:{
-    textDecorationColor: "#fff"
+    backgroundColor: '#20AB37',
+    marginLeft: 30,
+    marginTop: 20,
+    marginBottom: 20,
+     width: 80,
+    fontWeight: '600',
+    paddingLeft: 15,
+    borderWidth: 1,
+    borderRadius: 7,
   }
 
 
