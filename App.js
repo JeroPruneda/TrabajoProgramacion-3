@@ -1,11 +1,9 @@
-
+import React from "react"
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View >
       <Text>Jero P no hace nada</Text>
-      
-    </View>
   );
 }
 
