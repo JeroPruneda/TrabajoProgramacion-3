@@ -1,9 +1,10 @@
 import React from "react"
-import { StyleSheet, Text, View } from 'react-native';
+
+import MainNavigation from "./src/navigation/MainNavigation";
 
 export default function App() {
   return (
-      <Text>Jero P no hace nada</Text>
+     <MainNavigation />
   );
 }
 
