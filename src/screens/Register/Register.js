@@ -1,6 +1,6 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity,Image } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
-import { auth } from "../../firebase/config"
+import { auth, db } from "../../firebase/config"
 
 
 export default class Register extends Component {
@@ -10,28 +10,31 @@ export default class Register extends Component {
       email: "",
       password: "",
       user: "",
-      fotoUrl: "",
+      perfil: "",
+      mostrarCamara: true,
       error: ""
     }
   }
 
-  comentar(){
+   collection(){
     db.collection("Users").add({
         owner: auth.currentUser.email,
         createdAt: Date.now(),
         user: this.state.user,
-        foto: this.state.fotoUrl
+        perfil: this.state.perfil
+        
     })
     .then(() => this.setState({user: ""}))
     .catch((error) => console.log(error))
-}
+  }
 
   register(email, password){
     auth.createUserWithEmailAndPassword(email, password)
     .then(response => this.props.navigation.navigate("TabNavigation"))
     .catch(err => this.setState({error: err.message}))
   }
-
+  
+  
   render() {
     return (
       <View style = {styles.container}>
@@ -46,19 +49,6 @@ export default class Register extends Component {
             onChangeText={(text) => this.setState({email: text})}
             value = {this.state.email}
           />
-            <TextInput 
-            style = {styles.input}
-            onChangeText={ (text) => this.setState({ nombre: text})}
-            placeholder = "Ingresar nombre de usuario"
-            value= {this.state.mail}
-            />
-            
-              <TextInput 
-            style = {styles.input}
-            onChangeText={ (text) => this.setState({ perfil: text})}
-            placeholder = "Descripcion de tu perfil"
-            value= {this.state.mail}
-            />
           <TextInput 
             style = {styles.input}
             keyboardType = "default"
@@ -74,11 +64,17 @@ export default class Register extends Component {
             onChangeText={(text) => this.setState({user: text})}
             value = {this.state.user}
           />
+           <TextInput 
+            style = {styles.input}
+            keyboardType = "default"
+            placeholder = "Descripción de tu perfil"
+            onChangeText={ (text) => this.setState({perfil: text})}
+            value= {this.state.perfil}
+            />
         </View>
-        
 
         <View>
-          <TouchableOpacity onPress={() => this.register(this.state.email, this.state.password)} style = {styles.boton}>
+          <TouchableOpacity onPress={() => this.register(this.state.email, this.state.password)} style = {styles.boton} >
             <Text >Register</Text>
           </TouchableOpacity>
         </View>
@@ -86,7 +82,7 @@ export default class Register extends Component {
         <View>
           <Text>Tenes cuenta?</Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-            <Text>Logueate</Text>
+            <Text>Log in</Text>
           </TouchableOpacity>
         </View>
 
@@ -111,8 +107,6 @@ const styles = StyleSheet.create({
    margin: 20,
    fontFamily:"times new roman",
    fontSize:40,
-   
-
    
   },
   input: {
