@@ -20,7 +20,6 @@ export default class Login extends Component {
       })
     }
 
-
     login(mail, pass){
         auth.signInWithEmailAndPassword(mail, pass)
         .then(resp => this.props.navigation.navigate("TabNavigation"))

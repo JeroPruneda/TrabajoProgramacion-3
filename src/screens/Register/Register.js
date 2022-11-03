@@ -9,9 +9,22 @@ export default class Register extends Component {
     this.state = {
       email: "",
       password: "",
+      user: "",
+      fotoUrl: "",
       error: ""
     }
   }
+
+  comentar(){
+    db.collection("Users").add({
+        owner: auth.currentUser.email,
+        createdAt: Date.now(),
+        u: this.state.comment,
+        foto: this.state.fotoUrl
+    })
+    .then(() => this.setState({comment: ""}))
+    .catch((error) => console.log(error))
+}
 
   register(email, password){
     auth.createUserWithEmailAndPassword(email, password)
@@ -41,11 +54,18 @@ export default class Register extends Component {
             onChangeText={(text) => this.setState({password: text})}
             value = {this.state.password}
           />
+          <TextInput 
+            style = {styles.input}
+            keyboardType = "default"
+            placeholder='Username'
+            onChangeText={(text) => this.setState({user: text})}
+            value = {this.state.user}
+          />
         </View>
         
 
         <View>
-          <TouchableOpacity onPress={() => this.register(this.state.email, this.state.password)} style = {styles.boton}>
+          <TouchableOpacity onPress={() => this.register(this.state.email, this.state.password, this.state.user)} style = {styles.boton}>
             <Text style = {styles.botonColor}>Register</Text>
           </TouchableOpacity>
         </View>
