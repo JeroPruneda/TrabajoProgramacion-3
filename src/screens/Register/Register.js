@@ -19,10 +19,10 @@ export default class Register extends Component {
     db.collection("Users").add({
         owner: auth.currentUser.email,
         createdAt: Date.now(),
-        u: this.state.comment,
+        user: this.state.user,
         foto: this.state.fotoUrl
     })
-    .then(() => this.setState({comment: ""}))
+    .then(() => this.setState({user: ""}))
     .catch((error) => console.log(error))
 }
 
@@ -30,7 +30,6 @@ export default class Register extends Component {
     auth.createUserWithEmailAndPassword(email, password)
     .then(response => this.props.navigation.navigate("TabNavigation"))
     .catch(err => this.setState({error: err.message}))
-
   }
 
   render() {
