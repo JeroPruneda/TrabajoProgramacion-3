@@ -1,4 +1,4 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity,Image } from 'react-native'
 import React, { Component } from 'react'
 import { auth } from "../../firebase/config"
 
@@ -25,6 +25,7 @@ export default class Register extends Component {
   render() {
     return (
       <View style = {styles.container}>
+    
         <Text>Register</Text>
        
         <View>
