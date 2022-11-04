@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     registro: {
       backgroundColor: '#D13945',
       marginLeft: 30,
-      marginTop: 500,
+      marginTop: 450,
       marginBottom: 20,
       width: 120,
       fontWeight: '600',
