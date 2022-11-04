@@ -35,9 +35,12 @@ class Posteos extends Component {
   
     render() {
         return (
-        <View style={styles.container}>
+        <View >
             {
-                
+                this.state.mostrarCamara ?
+                <Camara
+                cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
+                /> :
                 <>
                     <TextInput
                     placeholder='Descripcion'
