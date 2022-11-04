@@ -1,6 +1,7 @@
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
+import Camara from '../Camara/Camara'
 
 
 class Posteos extends Component {
@@ -14,19 +15,21 @@ class Posteos extends Component {
         }
     }
 
-    enviarPost(text){
+    subirPost(){
         db.collection('Posts').add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
-            descripcion: text,
+            descripcion: this.state.descripcion,
             likes:[],
             comentarios:[],
             foto: this.state.fotoUrl
         })
+        .then(() => this.setState({descripcion: ""}))
+        .catch((error) => console.log(error))
 
     }
 
-    cuandoSubaLaFoto(url){
+    subirFoto(url){
         this.setState({
             fotoUrl: url,
             mostrarCamara:false
@@ -39,17 +42,17 @@ class Posteos extends Component {
             {
                 this.state.mostrarCamara ?
                 <Camara
-                cuandoSubaLaFoto={(url)=> this.cuandoSubaLaFoto(url)}
+                subirFoto={(url)=> this.subirFoto(url)}
                 /> :
                 <>
-                    <TextInput
+                <TextInput
                     placeholder='Descripcion'
                     onChangeText={text => this.setState({descripcion: text})}
                     value={this.state.descripcion}
                     keyboardType='default'
                     style={styles.input}
                     />
-                    <TouchableOpacity onPress={()=> this.enviarPost(this.state.descripcion)}>
+                    <TouchableOpacity onPress={()=> this.subirPost(this.state.descripcion)}>
                         <Text>Mandar Posteo</Text>
                     </TouchableOpacity>
                 </>

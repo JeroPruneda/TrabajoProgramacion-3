@@ -25,7 +25,7 @@ class Posteo extends Component {
 
     like(){
         db
-        .collection('posteos')
+        .collection('Posts')
         .doc(this.props.id)
         .update({
             likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
@@ -40,7 +40,7 @@ class Posteo extends Component {
     }
 
     unlike(){
-        db.collection('posteos')
+        db.collection('Posts')
         .doc(this.props.id)
         .update({
             likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
