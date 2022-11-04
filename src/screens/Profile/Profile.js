@@ -40,13 +40,27 @@ import { auth, db } from '../../firebase/config';
   render() {
     return (
       <View>
-        <Text>Tu Perfil</Text>
+        <Text >Tu Perfil</Text>
          <FlatList
          data={this.state.miPerfil}
          keyExtractor={(item)=> item.id.toString()}
-         renderItem={({item}) => <Text>{item.data.user}</Text>}
+         renderItem={
+          ({item}) => 
+        <View>
+          <Text>
+          Nombre de Usuario: {item.data.user}
+         </Text>
+         <Text>
+          Descripcion de tu Perfil: {item.data.perfil}
+         </Text>
+         <Text>
+         Tu Gmail: {item.data.owner}
+         </Text>
+         </View>
+        }
        />  
         <View>
+          
             <TouchableOpacity onPress={() => this.cerrarSesion()}>
                 <Text style = {styles.registro} >Cerrar Sesion</Text>
             </TouchableOpacity>
