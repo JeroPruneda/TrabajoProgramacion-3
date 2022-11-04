@@ -18,7 +18,7 @@ import { auth, db } from '../../firebase/config';
              docs.forEach(doc => {
                 tusDatos.push({
                      id: doc.id,
-                    data: doc.data()//forma para sacar la info de la base
+                    data: doc.data()
                })
             })
             this.setState({

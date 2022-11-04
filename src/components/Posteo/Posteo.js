@@ -58,14 +58,14 @@ class Posteo extends Component {
     return (
       <View style={styles.container}>
         <View>
-            <Text style={styles.subtitle}>Descripcion:</Text>
-            <Text>{this.props.data.descripcion}</Text>
+            <Text style={styles.subtitle}>Descripcion: {this.props.data.descripcion} </Text>
             <Image 
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}
-
             />
+
         </View>
+        
         <View>
             <Text>{this.state.contador}</Text>
         {

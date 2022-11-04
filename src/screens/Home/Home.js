@@ -2,7 +2,7 @@ import { Text, View, FlatList, StyleSheet } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
-import Posteos from '../Posteos/Posteos'
+
 
 class Home extends Component {
     constructor(){
@@ -16,6 +16,7 @@ class Home extends Component {
         db
         .collection('Posts')
         .where('owner', '==', auth.currentUser.email)
+        .orderBy("createdAt", "desc")
         .limit(5)
         .onSnapshot(
             docs => {
