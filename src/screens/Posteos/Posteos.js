@@ -9,13 +9,13 @@ class Posteos extends Component {
         super()
         this.state={
             descripcion:'',
-            mostrarCamara:true,
+            mostrarCamara: true,
             fotoUrl:''
         }
     }
 
     enviarPost(text){
-        db.collection('posteos').add({
+        db.collection('Posts').add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
             descripcion: text,
@@ -28,7 +28,7 @@ class Posteos extends Component {
 
     cuandoSubaLaFoto(url){
         this.setState({
-            fotoUrl:url,
+            fotoUrl: url,
             mostrarCamara:false
         })
     }

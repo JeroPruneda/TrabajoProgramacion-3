@@ -1,4 +1,4 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity,FlatList } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 
@@ -10,28 +10,27 @@ import { auth, db } from '../../firebase/config';
             cargando: true,
         }
     }
-    //ACA ABAJO INTENTE HACER QUE EN TU PERFIL TE APAREZCAN LOS DATOS DE TU BASE, TU MAIL, NOMBRE USUARIO ETC, CAPTURANDOLOS PERO SEGURAMENTE ES DE OTRA MANERA
-    //PORQUE ACA ESTOY CAPTURANDO TODOS LOS DATOS DE TODOS LOS USUARIOS
-// // componentDidMount(){ 
-// //     db.collection("Users").onSnapshot(
-// //         docs =>{
-// //             let tusDatos = []
-// //             docs.forEach(doc => {
-// //                 tusDatos.push({
-// //                     id: doc.id,
-// //                     data: doc.data()//forma para sacar la info de la base
-// //                 })
-// //             })
-// //             this.setState({
-// //                 miPerfil: tusDatos,
-// //                 cargando : false
+    
+ componentDidMount(){ 
+    db.collection("Users").onSnapshot(
+        docs =>{
+             let tusDatos = []
+             docs.forEach(doc => {
+                tusDatos.push({
+                     id: doc.id,
+                    data: doc.data()//forma para sacar la info de la base
+               })
+            })
+            this.setState({
+                miPerfil: tusDatos,
+                 cargando : false
             
-// //             }),()=>console.log(this.state.miPerfil)
-// //             console.log(this.state.miPerfil)
-// //         }
+           }),()=>console.log(this.state.miPerfil)
+            console.log(this.state.miPerfil)
+         }
         
-// //     )
-// }
+    )
+}
     cerrarSesion(){
         auth.signOut()
         .then(resp => this.props.navigation.navigate("Login"))
@@ -42,11 +41,11 @@ import { auth, db } from '../../firebase/config';
     return (
       <View>
         <Text>Tu Perfil</Text>
-        {/* <FlatList
-       data={this.state.miPerfil}
-       keyExtractor={(item)=> item.id.toString()}
-       renderItem={({item}) => <Text>{item.data.user}</Text>}
-       />  */}
+         <FlatList
+         data={this.state.miPerfil}
+         keyExtractor={(item)=> item.id.toString()}
+         renderItem={({item}) => <Text>{item.data.user}</Text>}
+       />  
         <View>
             <TouchableOpacity onPress={() => this.cerrarSesion()}>
                 <Text style = {styles.registro} >Cerrar Sesion</Text>
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
       marginLeft: 30,
       marginTop: 500,
       marginBottom: 20,
-       width: 120,
+      width: 120,
       fontWeight: '600',
       paddingLeft: 15,
       borderWidth: 1,
