@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 
@@ -35,18 +35,19 @@ import { auth, db } from '../../firebase/config';
         auth.signOut()
         .then(resp => this.props.navigation.navigate("Login"))
         .catch(err => console.log(err))
+        
     }
        
   render() {
     return (
-      <View>
-        <Text >Tu Perfil</Text>
+      <View >
+        <Text >Tu Datos: </Text>
          <FlatList
          data={this.state.miPerfil}
          keyExtractor={(item)=> item.id.toString()}
          renderItem={
           ({item}) => 
-        <View>
+        <View style={styles.container}>
           <Text>
           Nombre de Usuario: {item.data.user}
          </Text>
@@ -55,6 +56,13 @@ import { auth, db } from '../../firebase/config';
          </Text>
          <Text>
          Tu Gmail: {item.data.owner}
+         </Text>
+         <Text>
+         Cantidad de Publicaciones: //hay que ver como se hace esto
+         </Text>
+         <Text>
+         Cantidad de Likes://hay que ver como se hace esto /////////
+         LE PONGO ESTE backgroundColor PARA SABER A QUE LE ESTAMOS PONIENDO ESTILOS
          </Text>
          </View>
         }
@@ -70,7 +78,13 @@ import { auth, db } from '../../firebase/config';
   }
 }
 const styles = StyleSheet.create({
-    
+  container:{
+    flex:1,
+    backgroundColor: 'skyblue',
+    alignItems:'center',
+    justifyContent:'center',
+   
+},
     registro: {
       backgroundColor: '#D13945',
       marginLeft: 30,
@@ -82,7 +96,7 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 7,
     },
-   
+    
 
    
   

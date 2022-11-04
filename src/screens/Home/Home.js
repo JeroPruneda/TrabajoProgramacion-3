@@ -38,20 +38,22 @@ class Home extends Component {
         return (
         <View 
         style={styles.container}
-        >
-            <Text>Home</Text>
+        >   
+            
+            <Image
+               style={styles.imagen}
+                source={require('../../../assets/esta.png')}
+                resizeMode='contain'
+            />
+            
+            <View  style={styles.container2}>
+                <Text>ACA VEMOS A LOS POSTS</Text>
             <FlatList
                 data={this.state.todosPosteos}
                 keyExtractor={(item)=> item.id.toString()}
                 renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data} />}
             />
-            <Image
-               style={styles.imagen}
-                source={
-                    {uri:'https://t1.uc.ltmcdn.com/es/posts/7/1/6/cuantos_paises_hay_en_el_mundo_29617_600.jpg'}
-                }
-                resizeMode='contain'
-            />
+            </View>
         </View>
         )
     }
@@ -64,10 +66,18 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     container2:{
-        flex:3
+        flex:2,
+        width: 350, 
+        height: 100, 
+        margin:20,
+        backgroundColor: 'skyblue',
+        
+        
+    
     },
     imagen:{
-        height:200,
+        marginTop: 20,
+        height:80,
         width:100
     }
 })
