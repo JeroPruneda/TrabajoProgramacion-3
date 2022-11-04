@@ -1,12 +1,14 @@
 
-import { View, Text } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import React from 'react'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import Home from '../screens/Home/Home'
-import {FontAwesome} from '@expo/vector-icons'
 import Posteos from '../screens/Posteos/Posteos'
-
+import Profile from '../screens/Profile/Profile'
+import {FontAwesome} from "@expo/vector-icons"
 const Tab = createBottomTabNavigator()
+import React from 'react'
+
+
 
 export default function TabNavigation() {
   return (
@@ -15,6 +17,9 @@ export default function TabNavigation() {
         
         <Tab.Screen name='Home' component={Home} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />}}/>
         <Tab.Screen name='Posteos' component={Posteos} />
+        <Tab.Screen name='Profile' component={Profile} options= {{tabBarIcon: () => <FontAwesome name="perfil" size={24} color="black" />}}/>
+       
+
     </Tab.Navigator>
   )
 }
