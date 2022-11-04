@@ -38,7 +38,7 @@ class Posteos extends Component {
   
     render() {
         return (
-        <View >
+        <View style = {styles.container}>
             {
                 this.state.mostrarCamara ?
                 <Camara
@@ -63,6 +63,15 @@ class Posteos extends Component {
 }
 
 const styles = StyleSheet.create({
+    input:{
+        borderColor:'blue',
+        borderWidth:1,
+        marginHorizontal:16,
+        height:42
+        },
+        container: {
+            height: 500
+        }
     
 })
 export default Posteos
