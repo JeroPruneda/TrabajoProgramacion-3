@@ -14,7 +14,7 @@ class Home extends Component {
 
     componentDidMount(){
         db
-        .collection('posteos')
+        .collection('Posts')
         .where('owner', '==', auth.currentUser.email)
         .limit(5)
         .onSnapshot(

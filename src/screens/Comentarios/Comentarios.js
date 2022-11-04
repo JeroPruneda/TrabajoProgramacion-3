@@ -6,8 +6,6 @@ export default class Comentarios extends Component {
         super();
         this.state = {
             comentario: "",
-            mostrarCamara: true,
-            fotoUrl: ""
         }
     }
 

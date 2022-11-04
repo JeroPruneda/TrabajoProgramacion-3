@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
@@ -60,14 +60,23 @@ class Posteo extends Component {
         <View>
             <Text style={styles.subtitle}>Descripcion:</Text>
             <Text>{this.props.data.descripcion}</Text>
+            <Image 
+            style = {styles.camara}
+            source = {{uri: this.props.data.foto}}
+
+            />
         </View>
         <View>
             <Text>{this.state.contador}</Text>
         {
             this.state.elLike ?
-                <TouchableOpacity onPress={()=> this.unlike()}></TouchableOpacity>
+                <TouchableOpacity onPress={()=> this.unlike()}>
+                    <Text> Unlike </Text>
+                </TouchableOpacity>
             :
-                <TouchableOpacity onPress={()=> this.like()}></TouchableOpacity>
+                <TouchableOpacity onPress={()=> this.like()}>
+                    <Text>Like</Text>
+                </TouchableOpacity>
         }
         <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>
             <Text>Agregar comentario</Text>
@@ -80,6 +89,9 @@ class Posteo extends Component {
 }
 
 const styles = StyleSheet.create({
+    camara: {
+        height: 300
+    }
     
 })
 
