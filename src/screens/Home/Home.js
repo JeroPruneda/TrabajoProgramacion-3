@@ -2,7 +2,7 @@ import { Text, View, FlatList, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
-import Card from '../../components/Card/Card'
+
 
 
 
