@@ -2,6 +2,8 @@ import { Text, View, FlatList, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
+import Card from '../../components/Card/Card'
+
 
 
 class Home extends Component {
@@ -14,15 +16,15 @@ class Home extends Component {
 
     componentDidMount(){
         db
-        .collection('Posts')
+        .collection('Posteos')
         .where('owner', '==', auth.currentUser.email)
         .orderBy("createdAt", "desc")
         .limit(5)
         .onSnapshot(
             docs => {
-                let posts = []
+                let posteos = []
                 docs.forEach(doc => {
-                    posts.push({
+                    posteos.push({
                         id: doc.id,
                         data:doc.data()
                     })
@@ -60,7 +62,7 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-    container:{
+     container:{
         flex:1,
         alignItems:'center',
         justifyContent:'center'
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         height:80,
         width:100
-    }
+    } 
 })
 
 export default Home

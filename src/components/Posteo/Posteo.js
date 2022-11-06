@@ -25,7 +25,7 @@ class Posteo extends Component {
 
     like(){
         db
-        .collection('Posts')
+        .collection('Posteos')
         .doc(this.props.id)
         .update({
             likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
@@ -40,7 +40,7 @@ class Posteo extends Component {
     }
 
     unlike(){
-        db.collection('Posts')
+        db.collection('Posteos')
         .doc(this.props.id)
         .update({
             likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
@@ -58,7 +58,7 @@ class Posteo extends Component {
     return (
       <View style={styles.container}>
         <View>
-            <Text style={styles.subtitle}>Descripcion: {this.props.data.descripcion} </Text>
+            <Text style={styles.subtitle}>Descripcion:{/*  {this.props.data.descripcion} */} </Text>
             <Image 
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}

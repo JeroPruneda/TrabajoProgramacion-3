@@ -16,7 +16,7 @@ class Posteos extends Component {
     }
 
     subirPost(){
-        db.collection('Posts').add({
+        db.collection('Posteos').add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
             descripcion: this.state.descripcion,
@@ -25,7 +25,7 @@ class Posteos extends Component {
             foto: this.state.fotoUrl
         })
         .then(() => this.setState({descripcion: ""}))
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error)) 
 
     }
 
@@ -40,10 +40,10 @@ class Posteos extends Component {
         return (
         <View style = {styles.container}>
             {
-                this.state.mostrarCamara ?
+                  this.state.mostrarCamara ?
                 <Camara
                 subirFoto={(url)=> this.subirFoto(url)}
-                /> :
+                /> :  
                 <>
                 <TextInput
                     placeholder='Descripcion'
