@@ -11,7 +11,7 @@ import React from 'react'
 
 export default function TabNavigation() {
   return (
-    <NavigationContainer>
+    
       
       <Tab.Navigator>
         
@@ -22,7 +22,7 @@ export default function TabNavigation() {
 
     </Tab.Navigator>
 
-    </NavigationContainer>
+    
     
   )
 }
