@@ -44,7 +44,7 @@ import back from '../../../assets/back.webp'
   render() {
     return (
       <View style={styles.container} >
-        <Text >Tu Datos: </Text>
+        <Text >Tus Datos: </Text>
          <FlatList
          data={this.state.miPerfil}
          keyExtractor={(item)=> item.id.toString()}

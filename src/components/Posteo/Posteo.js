@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
+import { TextInput } from 'react-native-web'
 
 class Posteo extends Component {
 
@@ -11,6 +12,7 @@ class Posteo extends Component {
         this.state = {
             elLike: false,
             contador: props.data.likes.length,
+            comentario: ""
             
         }
     }
@@ -55,6 +57,23 @@ class Posteo extends Component {
         .catch(err => console.log(err))
     }
 
+    comentar(text){
+        db.collection("Posts").doc(this.props.id).update({
+          comentarios: firebase.firestore.FieldValue.arrayUnion({
+            owner: auth.currentUser.email,
+            cretedAt: Date.now(),
+            comentario: text
+          })
+        })
+        .then(resp => {
+          this.setState({
+              comentario: ""
+          })
+      })
+      .catch(err=> console.log(err))
+    }
+  
+
 
   render() {
     return (
@@ -80,11 +99,22 @@ class Posteo extends Component {
                     <Text>Like</Text>
                 </TouchableOpacity>
         }
-         <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>
+
+        
+         <TouchableOpacity onPress={()=> this.comentar(this.state.comentario)}>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>
+        <TextInput 
+            style = {styles.input}
+            keyboardType = "default"
+            placeholder = "Comentario"
+            onChangeText={ (text) => this.setState({comentario: text})}
+            value= {this.state.comentario}
+            />
+        <Text> Comentarios: {}</Text>
         </View>
         
+
       </View>
     )
   }
@@ -93,7 +123,19 @@ class Posteo extends Component {
 const styles = StyleSheet.create({
     camara: {
         height: 300
-    }
+    },
+    input: {
+   
+        fontSize: 18,
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20, 
+        fontWeight: '600',
+        paddingLeft: 20,
+        borderWidth: 1,
+        borderRadius: 7,
+        paddingRight: 12,
+      },
     
 })
 
