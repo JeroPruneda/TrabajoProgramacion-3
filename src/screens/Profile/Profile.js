@@ -13,7 +13,13 @@ import back from '../../../assets/back.webp'
     }
     
  componentDidMount(){ 
+<<<<<<< HEAD
     db.collection("Users").onSnapshot(
+=======
+    db.collection("Users")
+    .where("owner", "==", auth.currentUser.email)
+    .onSnapshot(
+>>>>>>> 4af76b40c1aff7b6c540514b6ab1d9693d339006
         docs =>{
              let tusDatos = []
              docs.forEach(doc => {
@@ -32,12 +38,22 @@ import back from '../../../assets/back.webp'
         
     )
 }
+<<<<<<< HEAD
     cerrarSesion(){
         auth.signOut()
         .then(resp => this.props.navigation.navigate("Login"))
         .catch(err => console.log(err))
         
     }
+=======
+
+
+  cerrarSesion(){
+    auth.signOut()
+    .then(resp => this.props.navigation.navigate("Login"))
+    .catch(err => console.log(err))
+  }
+>>>>>>> 4af76b40c1aff7b6c540514b6ab1d9693d339006
        
   render() {
     return (
@@ -48,6 +64,7 @@ import back from '../../../assets/back.webp'
          keyExtractor={(item)=> item.id.toString()}
          renderItem={
           ({item}) => 
+<<<<<<< HEAD
         <View style={styles.hijo}>
           <Text style={styles.usuario}>
           Nombre de Usuario: {item.data.user}
@@ -64,6 +81,20 @@ import back from '../../../assets/back.webp'
          <Text style={styles.usuario}>
          Cantidad de Likes://hay que ver como se hace esto /////////
          LE PONGO ESTE backgroundColor PARA SABER A QUE LE ESTAMOS PONIENDO ESTILOS
+=======
+        <View style={styles.container}>
+          <Text>
+          Nombre de usuario: {item.data.user}
+         </Text>
+         <Text>
+          Descripcion de tu perfil: {item.data.perfil}
+         </Text>
+         <Text>
+         Tu mail: {item.data.owner}
+         </Text>
+         <Text>
+         Cantidad de Publicaciones: 
+>>>>>>> 4af76b40c1aff7b6c540514b6ab1d9693d339006
          </Text>
          </View>
         }
