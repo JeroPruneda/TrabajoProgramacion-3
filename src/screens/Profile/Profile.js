@@ -34,6 +34,7 @@ import back from '../../../assets/back.webp'
         
     )
 }
+
     cerrarSesion(){
         auth.signOut()
         .then(resp => this.props.navigation.navigate("Login"))
