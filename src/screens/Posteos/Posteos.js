@@ -16,7 +16,7 @@ class Posteos extends Component {
     }
 
     subirPost(){
-        db.collection('Posteos').add({
+        db.collection('Posts').add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
             descripcion: this.state.descripcion,

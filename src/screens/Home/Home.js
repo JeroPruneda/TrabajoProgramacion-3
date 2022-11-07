@@ -4,8 +4,6 @@ import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
 
 
-
-
 class Home extends Component {
     constructor(){
         super()
@@ -17,8 +15,8 @@ class Home extends Component {
     componentDidMount(){
         db
         .collection('Posts')
-        .where('foto', '==', "fotoUrl")
-        .orderBy("foto", "desc")
+        .where('owner', '==', auth.currentUser.email)
+        .orderBy("owner", "desc")
         .limit(5)
         .onSnapshot(
             docs => {
