@@ -1,6 +1,5 @@
-
+import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import Home from '../screens/Home/Home'
 import Posteos from '../screens/Posteos/Posteos'
 import Profile from '../screens/Profile/Profile'
@@ -12,8 +11,9 @@ import React from 'react'
 
 export default function TabNavigation() {
   return (
-    <Tab.Navigator
-    >
+    <NavigationContainer>
+      
+      <Tab.Navigator>
         
         <Tab.Screen name='BIENVENIDO!'component={Home} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }}/>
         <Tab.Screen name='TUS PUBLICACIONES' component={Posteos} options = {{tabBarIcon: () => <FontAwesome name="photo" size={24} color="black" />}}/>
@@ -21,5 +21,8 @@ export default function TabNavigation() {
        
 
     </Tab.Navigator>
+
+    </NavigationContainer>
+    
   )
 }
