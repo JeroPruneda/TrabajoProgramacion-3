@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native'
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home/Home'
 import Posteos from '../screens/Posteos/Posteos'
@@ -8,11 +8,10 @@ const Tab = createBottomTabNavigator()
 import React from 'react'
 
 
-
 export default function TabNavigation() {
   return (
-    <NavigationContainer>
-      
+    
+
       <Tab.Navigator>
         
         <Tab.Screen name='BIENVENIDO!'component={Home} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }}/>
@@ -22,7 +21,7 @@ export default function TabNavigation() {
 
     </Tab.Navigator>
 
-    </NavigationContainer>
+   
     
   )
 }
