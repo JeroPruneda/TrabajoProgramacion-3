@@ -22,6 +22,7 @@ class Posteo extends Component {
             })
         }
     }
+   
 
     like(){
         db
@@ -58,7 +59,7 @@ class Posteo extends Component {
     return (
       <View style={styles.container}>
         <View>
-            <Text style={styles.subtitle}>Descripcion:  {this.props.data.descripcion}  </Text>
+            <Text style={styles.subtitle}>Descripcion:   {this.props.data.descripcion}   </Text>
             <Image 
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}
@@ -76,6 +77,19 @@ class Posteo extends Component {
             :
                 <TouchableOpacity onPress={()=> this.like()}>
                     <Text>Like</Text>
+                </TouchableOpacity>
+        }
+        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>
+            <Text>Agregar comentario</Text>
+        </TouchableOpacity>
+        {
+            this.state.commets ?
+                <TouchableOpacity onPress={()=> this.unlike()}>
+                    <Text> Agregar comentarios </Text>
+                </TouchableOpacity>
+            :
+                <TouchableOpacity onPress={()=> this.like()}>
+                    <Text>Aun no hay comentarios</Text>
                 </TouchableOpacity>
         }
         <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>

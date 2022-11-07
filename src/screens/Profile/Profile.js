@@ -31,6 +31,7 @@ import { auth, db } from '../../firebase/config';
         
     )
 }
+
     cerrarSesion(){
         auth.signOut()
         .then(resp => this.props.navigation.navigate("Login"))

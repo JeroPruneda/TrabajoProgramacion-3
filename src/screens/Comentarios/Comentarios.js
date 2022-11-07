@@ -9,9 +9,6 @@ export default class Comentarios extends Component {
         }
     }
 
-    
-
-
   render() {
     return (
       <View>
