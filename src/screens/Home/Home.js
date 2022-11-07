@@ -16,7 +16,6 @@ class Home extends Component {
         db
         .collection('Posts')
         .where('owner', '==', auth.currentUser.email)
-        .orderBy("owner", "desc")
         .limit(5)
         .onSnapshot(
             docs => {
