@@ -2,6 +2,7 @@ import { Text, View, FlatList, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
+import back from '../../../assets/back.webp'
 
 
 class Home extends Component {
@@ -62,7 +63,8 @@ const styles = StyleSheet.create({
      container:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundImage:`url(${back})`
     },
     container2:{
         flex:2,
