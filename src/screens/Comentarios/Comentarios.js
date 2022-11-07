@@ -14,7 +14,7 @@ export default class Comentarios extends Component {
     }
 
     comentar(text){
-      db.collection("Posts").doc(this.props.id).update({
+      db.collection("Posts").doc(this.props.route.params.id).update({
         comentarios: firebase.firestore.FieldValue.arrayUnion({
           owner: auth.currentUser.email,
           cretedAt: Date.now(),
