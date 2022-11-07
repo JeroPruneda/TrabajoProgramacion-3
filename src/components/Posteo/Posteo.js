@@ -12,7 +12,6 @@ class Posteo extends Component {
         this.state = {
             elLike: false,
             contador: props.data.likes.length,
-            comentario: ""
             
         }
     }
@@ -58,22 +57,7 @@ class Posteo extends Component {
         .catch(err => console.log(err))
     }
 
-    comentar(text){
-        db.collection("Posts").doc(this.props.id).update({
-          comentarios: firebase.firestore.FieldValue.arrayUnion({
-            owner: auth.currentUser.email,
-            cretedAt: Date.now(),
-            comentario: text
-          })
-        })
-        .then(resp => {
-          this.setState({
-              comentario: ""
-          })
-      })
-      .catch(err=> console.log(err))
-    }
-  
+    
 
 
   render() {
@@ -101,21 +85,12 @@ class Posteo extends Component {
                 </TouchableOpacity>
         }
 
-        
-         <TouchableOpacity onPress={()=> this.comentar(this.state.comentario)}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios")}>
             <Text>Agregar comentario</Text>
-        </TouchableOpacity>
-        <TextInput 
-            style = {styles.input}
-            keyboardType = "default"
-            placeholder = "Comentario"
-            onChangeText={ (text) => this.setState({comentario: text})}
-            value= {this.state.comentario}
-            />
-        <Text> Comentarios: {}</Text>
-        </View>
-        
 
+        </TouchableOpacity>
+        </View>
+    
       </View>
     )
   }
@@ -125,18 +100,7 @@ const styles = StyleSheet.create({
     camara: {
         height: 300
     },
-    input: {
-   
-        fontSize: 18,
-        marginTop: 20,
-        marginLeft: 20,
-        marginRight: 20, 
-        fontWeight: '600',
-        paddingLeft: 20,
-        borderWidth: 1,
-        borderRadius: 7,
-        paddingRight: 12,
-      },
+    
     
 })
 
