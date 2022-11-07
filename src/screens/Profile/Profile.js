@@ -12,7 +12,7 @@ import { auth, db } from '../../firebase/config';
     }
     
  componentDidMount(){ 
-    db.collection("Users").onSnapshot(
+    db.collection("Users", "Posts").onSnapshot(
         docs =>{
              let tusDatos = []
              docs.forEach(doc => {
