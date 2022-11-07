@@ -12,7 +12,9 @@ import { auth, db } from '../../firebase/config';
     }
     
  componentDidMount(){ 
-    db.collection("Users", "Posts").onSnapshot(
+    db.collection("Users")
+    .where("owner", "==", auth.currentUser.email)
+    .onSnapshot(
         docs =>{
              let tusDatos = []
              docs.forEach(doc => {
@@ -31,11 +33,13 @@ import { auth, db } from '../../firebase/config';
         
     )
 }
-    cerrarSesion(){
-        auth.signOut()
-        .then(resp => this.props.navigation.navigate("Login"))
-        .catch(err => console.log(err))
-    }
+
+
+  cerrarSesion(){
+    auth.signOut()
+    .then(resp => this.props.navigation.navigate("Login"))
+    .catch(err => console.log(err))
+  }
        
   render() {
     return (
@@ -48,20 +52,16 @@ import { auth, db } from '../../firebase/config';
           ({item}) => 
         <View style={styles.container}>
           <Text>
-          Nombre de Usuario: {item.data.user}
+          Nombre de usuario: {item.data.user}
          </Text>
          <Text>
-          Descripcion de tu Perfil: {item.data.perfil}
+          Descripcion de tu perfil: {item.data.perfil}
          </Text>
          <Text>
-         Tu Gmail: {item.data.owner}
+         Tu mail: {item.data.owner}
          </Text>
          <Text>
-         Cantidad de Publicaciones: //hay que ver como se hace esto
-         </Text>
-         <Text>
-         Cantidad de Likes://hay que ver como se hace esto /////////
-         LE PONGO ESTE backgroundColor PARA SABER A QUE LE ESTAMOS PONIENDO ESTILOS
+         Cantidad de Publicaciones: 
          </Text>
          </View>
         }

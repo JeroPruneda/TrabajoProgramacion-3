@@ -22,7 +22,6 @@ export default class Register extends Component {
         createdAt: Date.now(),
         user: this.state.user,
         perfil: this.state.perfil
-        
     })
     .then(() => this.setState({user: ""}))
     .catch((error) => console.log(error))
