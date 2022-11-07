@@ -15,9 +15,20 @@ export default function TabNavigation() {
     <Tab.Navigator
     >
         
-        <Tab.Screen name='Home' component={Home} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />}}/>
-        <Tab.Screen name='Posteos' component={Posteos} options = {{tabBarIcon: () => <FontAwesome name="photo" size={24} color="black" />}}/>
-        <Tab.Screen name='Profile' component={Profile} options= {{tabBarIcon: () =>  <FontAwesome name="user" size={24} color="black" />}}/>
+        <Tab.Screen name='BIENVENIDO!'
+        
+     
+         component={Home}
+          options= 
+          {{tabBarIcon: () => 
+          <FontAwesome name="home" 
+          size={24} color="black" />
+          
+          }}/>
+
+
+        <Tab.Screen name='TUS PUBLICACIONES' component={Posteos} options = {{tabBarIcon: () => <FontAwesome name="photo" size={24} color="black" />}}/>
+        <Tab.Screen name='TU PERFIL' component={Profile} options= {{tabBarIcon: () =>  <FontAwesome name="user" size={24} color="black" />}}/>
        
 
     </Tab.Navigator>
