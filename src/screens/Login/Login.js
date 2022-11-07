@@ -44,6 +44,7 @@ export default class Login extends Component {
             style = {styles.input}
             onChangeText={ (text) => this.setState({ pass: text})}
             placeholder = "Ingresar contraseña"
+            secureTextEntry = {true}
             value= {this.state.pass}
             />
         </View>

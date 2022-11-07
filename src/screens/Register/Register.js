@@ -16,20 +16,19 @@ export default class Register extends Component {
     }
   }
 
-   collection(){
-    db.collection("Users").add({
-        owner: auth.currentUser.email,
-        createdAt: Date.now(),
-        user: this.state.user,
-        perfil: this.state.perfil
-        
-    })
-    .then(() => this.setState({user: ""}))
-    .catch((error) => console.log(error))
-  }
+   
 
   register(email, password){
-    auth.createUserWithEmailAndPassword(email, password)
+     auth.createUserWithEmailAndPassword(email, password)
+    .then(() => db.collection("Users").add({
+      owner: auth.currentUser.email,
+      createdAt: Date.now(),
+      user: this.state.user,
+      perfil: this.state.perfil
+      
+  })
+  .then(() => this.setState({user: ""}))
+  .catch((error) => console.log(error)))
     .then(response => this.props.navigation.navigate("TabNavigation"))
     .catch(err => this.setState({error: err.message}))
   }
