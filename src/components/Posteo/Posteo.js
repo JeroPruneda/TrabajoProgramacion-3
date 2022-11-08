@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
-import {FontAwesome} from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons';
 import { TextInput } from 'react-native-web'
 
 class Posteo extends Component {
@@ -64,31 +64,33 @@ class Posteo extends Component {
     return (
       <View style={styles.container}>
         <View>
-            <Text style={styles.subtitle}>Descripcion:   {this.props.data.descripcion}   </Text>
+            
             <Image 
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}
             />
-             <Text style={styles.subtitle}>Comentarios:    </Text>
 
+            <Text style={styles.subtitle}>Descripcion :   {this.props.data.descripcion}   </Text>
+             <Text style={styles.subtitle}>Comentarios:     </Text>
+             <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id:this.props.id}) }>
+            <Text>Agregar comentario</Text>
+        </TouchableOpacity>
         </View>
         
         <View>
-            <Text>{this.state.contador}</Text>
+        <Text  style={styles.subtitle1}> {this.state.contador} <AntDesign name="heart" size={20} color="red" />  </Text>
         {
             this.state.elLike ?
-                <TouchableOpacity onPress={()=> this.unlike()}>
-                    <Text> Unlike </Text>
+                <TouchableOpacity style={styles.botton2} onPress={()=> this.unlike()}>
+                   <AntDesign name="dislike1" size={24} color="black" />
                 </TouchableOpacity>
             :
-                <TouchableOpacity onPress={()=> this.like()}>
-                    <Text>Like</Text>
+                <TouchableOpacity style={styles.botton}  onPress={()=> this.like()}>
+                    <AntDesign name="like1" size={24} color="black" />
                 </TouchableOpacity>
         }
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id:this.props.id}) }>
-            <Text>Agregar comentario</Text>
-        </TouchableOpacity>
+       
         </View>
     
       </View>
@@ -97,9 +99,45 @@ class Posteo extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        backgroundColor:'#838F8F',
+        margin:10,
+        padding:10,
+        borderRadius:20
+
+       
+    },
     camara: {
         height: 300
     },
+    subtitle:{
+        backgroundColor:'#E7E7E7',
+        margin:10,
+        width:250,
+        padding:10,
+        borderWidth: 1,
+        borderRadius:20
+      },
+     
+      botton:{
+        margin:10,
+        backgroundColor:'#34909C',
+        width:40,
+        padding:10,
+        borderWidth: 1,
+        borderRadius:20,
+       
+      },
+      botton2:{
+        margin:10,
+        backgroundColor:'#DE2118',
+        width:40,
+        padding:10,
+        borderWidth: 1,
+        borderRadius:20,
+       
+      }
     
     
 })

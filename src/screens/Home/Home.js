@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
 import Search from '../../components/Search/Search'
-import back from '../../../assets/back.webp'
+import back from '../../../assets/back2.webp'
 import Opinion from '../../screens/Comentarios/Comentarios'
 
 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         width: 350, 
         height: 100, 
         margin:20,
-        backgroundColor: 'skyblue',
+        
         
         
     
