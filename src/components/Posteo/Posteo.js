@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
+import { TextInput } from 'react-native-web'
 
 class Posteo extends Component {
 
@@ -56,6 +57,8 @@ class Posteo extends Component {
         .catch(err => console.log(err))
     }
 
+    
+
 
   render() {
     return (
@@ -66,6 +69,7 @@ class Posteo extends Component {
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}
             />
+             <Text style={styles.subtitle}>Comentariossss:     </Text>
 
         </View>
         
@@ -81,24 +85,12 @@ class Posteo extends Component {
                     <Text>Like</Text>
                 </TouchableOpacity>
         }
-         <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>
-            <Text>Agregar comentario</Text>
-        </TouchableOpacity>
-        {
-            this.state.commets ?
-                <TouchableOpacity onPress={()=> this.unlike()}>
-                    <Text> Agregar comentarios </Text>
-                </TouchableOpacity>
-            :
-                <TouchableOpacity onPress={()=> this.like()}>
-                    <Text>Aun no hay comentarios</Text>
-                </TouchableOpacity>
-        }
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>
+
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id:this.props.id}) }>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>
         </View>
-        
+    
       </View>
     )
   }
@@ -107,7 +99,8 @@ class Posteo extends Component {
 const styles = StyleSheet.create({
     camara: {
         height: 300
-    }
+    },
+    
     
 })
 
