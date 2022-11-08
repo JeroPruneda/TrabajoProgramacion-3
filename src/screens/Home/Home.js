@@ -49,7 +49,7 @@ class Home extends Component {
             />
            
             <View  style={styles.container2}>
-                <Text>ACA VEMOS A LOS POSTS</Text>
+            <Text style={styles.palabra} >BIENVENIDO!</Text>
             <FlatList
                 data={this.state.todosPosteos}
                 keyExtractor={(item)=> item.id.toString()}
@@ -83,6 +83,14 @@ const styles = StyleSheet.create({
         
         
     
+    },
+    palabra:{
+        backgroundColor: "gray",
+        textAlign:"center",
+        width: 200,
+        marginLeft:80,
+        borderRadius:5,
+        borderWidth:2,
     },
     imagen:{
         marginTop: 20,
