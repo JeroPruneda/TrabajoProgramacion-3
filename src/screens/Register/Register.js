@@ -1,6 +1,7 @@
 import { Text, View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from "../../firebase/config"
+import back from '../../../assets/back2.webp'
 
 
 export default class Register extends Component {
@@ -37,10 +38,14 @@ export default class Register extends Component {
   render() {
     return (
       <View style = {styles.container}>
-    
-        <Text>Register</Text>
+    <Image
+               style={styles.imagen}
+                source={require('../../../assets/esta.png')}
+                resizeMode='contain'
+            />
+        
        
-        <View>
+        <View style = {styles.container}>
           <TextInput 
             style = {styles.input}
             keyboardType = "email-address"
@@ -74,14 +79,14 @@ export default class Register extends Component {
 
         <View>
           <TouchableOpacity onPress={() => this.register(this.state.email, this.state.password)} style = {styles.boton} >
-            <Text >Register</Text>
+            <Text style = {styles.botonColor}>Register</Text>
           </TouchableOpacity>
         </View>
 
         <View>
           <Text>Tenes cuenta?</Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-            <Text>Log in</Text>
+            <Text style = {styles.registro}>Log in</Text>
           </TouchableOpacity>
         </View>
 
@@ -96,8 +101,10 @@ export default class Register extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
-    marginTop: 0,
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundImage:`url(${back})`,
   },
   palabra:{
     flexDirection: 'row',
@@ -125,7 +132,7 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 20,
     marginBottom: 20,
-     width: 90,
+     width: 70,
     fontWeight: '600',
     paddingLeft: 15,
     borderWidth: 1,
@@ -145,7 +152,12 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     borderWidth: 1,
     borderRadius: 7,
-  }
+  }, 
+  imagen:{
+    marginTop: 20,
+    height:80,
+    width:100
+} 
 
 
 })

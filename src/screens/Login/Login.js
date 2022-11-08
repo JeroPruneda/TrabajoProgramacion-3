@@ -1,7 +1,8 @@
-import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, StyleSheet, TouchableOpacity,Image } from 'react-native'
 import React, { Component } from 'react'
 import { auth } from '../../firebase/config';
 import { CurrentRenderContext } from '@react-navigation/native';
+import back from '../../../assets/back2.webp'
 
 export default class Login extends Component {
     constructor(){
@@ -29,10 +30,16 @@ export default class Login extends Component {
     }
   render() {
     return (
-      <View>
-        <Text style = {styles.palabra}>JJJ LINK</Text>
+      <View style = {styles.container} >
         
+        <Image
+               style={styles.imagen}
+                source={require('../../../assets/esta.png')}
+                resizeMode='contain'
+            />
+        <Text style = {styles.palabra}>JJJ LINK</Text>
         <View style = {styles.container}>
+        
             <TextInput 
             style = {styles.input}
             onChangeText={ (text) => this.setState({ mail: text})}
@@ -67,14 +74,16 @@ export default class Login extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-      paddingHorizontal: 10,
-      marginTop: 0,
+      flex:1,
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundImage:`url(${back})`
     },
     palabra:{
       flexDirection: 'row',
-     backgroundColor: '#D6E6D9',
+   
      textAlign: "center",
-     margin: 20,
+     margin: 10,
      fontFamily:"times new roman",
      fontSize:40,
      
@@ -124,7 +133,11 @@ const styles = StyleSheet.create({
       paddingLeft: 15,
       borderWidth: 1,
       borderRadius: 7,
-    }
-  
+    },
+    imagen:{
+      marginTop: 20,
+      height:80,
+      width:100
+  } 
   
   })
