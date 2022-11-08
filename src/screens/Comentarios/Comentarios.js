@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet,FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 import firebase from 'firebase'
@@ -12,9 +12,11 @@ export default class Comentarios extends Component {
             comentario: "",
         }
     }
-
+   
     comentar(text){
-      db.collection("Posts").doc(this.props.route.params.id).update({
+      db.collection("Posts")
+      .doc(this.props.route.params.id)
+      .update({
         comentarios: firebase.firestore.FieldValue.arrayUnion({
           owner: auth.currentUser.email,
           cretedAt: Date.now(),
@@ -32,6 +34,9 @@ export default class Comentarios extends Component {
   render() {
     return (
       <View>
+       
+      
+        
          <TextInput 
             style = {styles.input}
             keyboardType = "default"
@@ -42,6 +47,8 @@ export default class Comentarios extends Component {
         <TouchableOpacity onPress={() => this.comentar(this.state.comentario)}>
           <Text>Comentar</Text>
         </TouchableOpacity>
+   
+      
       </View>
     )
   }
@@ -59,5 +66,12 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     paddingRight: 12,
   },
+  usuario:{
+    backgroundColor:'#E7E7E7',
+    margin:10,
+    width:300,
+    borderWidth: 1,
+    borderRadius: 2,
+  }
 
 })

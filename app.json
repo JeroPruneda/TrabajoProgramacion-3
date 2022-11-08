@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Proyecto3",
+    "name": "JJJ LINK",
     "slug": "Proyecto3",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,7 +27,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/esta.png"
     }
   }
 }
