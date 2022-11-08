@@ -69,7 +69,7 @@ class Posteo extends Component {
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}
             />
-             <Text style={styles.subtitle}>Comentariossss:     </Text>
+             <Text style={styles.subtitle}>Comentarios:    </Text>
 
         </View>
         
