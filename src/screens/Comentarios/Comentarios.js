@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet,FlatList } from 'react-native'
+import { Text, View, StyleSheet, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 import firebase from 'firebase'
