@@ -2,6 +2,7 @@ import { Text, View, FlatList, StyleSheet, Image } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
+import Search from '../../components/Search/Search'
 import back from '../../../assets/back.webp'
 
 
@@ -30,7 +31,7 @@ class Home extends Component {
 
                 this.setState({
                     todosPosteos: posteos
-                })
+                })  
             })
         }
   
@@ -45,7 +46,7 @@ class Home extends Component {
                 source={require('../../../assets/esta.png')}
                 resizeMode='contain'
             />
-            
+           
             <View  style={styles.container2}>
                 <Text>ACA VEMOS A LOS POSTS</Text>
             <FlatList
