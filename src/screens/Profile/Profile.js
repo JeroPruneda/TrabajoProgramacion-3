@@ -83,10 +83,11 @@ import back from '../../../assets/back2.webp'
 }
 const styles = StyleSheet.create({
   container:{
-    flex:1,
+  
     backgroundImage:`url(${back})`,
     alignItems:'center',
     justifyContent:'center',
+
    
 },
     registro: {
@@ -103,13 +104,19 @@ const styles = StyleSheet.create({
     usuario:{
       backgroundColor:'#E7E7E7',
       margin:10,
-      width:300,
+      width:220,
       borderWidth: 1,
       borderRadius: 2,
     }
     ,
     hijo:{
+    
       backgroundColor:'#E7E7E7',
+      margin:10,
+      width:300,
+      padding:10,
+      borderWidth: 1,
+      borderRadius:20
       
     }
     
