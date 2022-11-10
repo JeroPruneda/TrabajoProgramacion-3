@@ -9,7 +9,7 @@ export default class Comentarios extends Component {
     constructor(props){
         super(props);
         this.state = {
-            comentario: "",
+            comentario: [],
         }
     }
   
@@ -17,6 +17,18 @@ export default class Comentarios extends Component {
       db.collection("Posts")
       .orderBy("createdAt", "desc")
       .onSnapshot(
+        docs => {
+          let comentarios = []
+          docs.forEach(jose => {
+            comentarios.push({
+              id:jose.id,
+              data: jose.data()
+            })
+          })
+          this.setState({
+            comentario: comentarios
+          })
+        }
         
 
       )
@@ -52,7 +64,11 @@ export default class Comentarios extends Component {
         <TouchableOpacity onPress={() => this.comentar(this.state.comentario)}>
           <Text>Comentar</Text>
         </TouchableOpacity>
-   
+        <FlatList 
+          data={this.state.comentario}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item}) => <Text>{item.data.comentarios.comentario}</Text>}
+        />
       
       </View>
     )
