@@ -1,9 +1,9 @@
-import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from 'react-native'
 import React, { Component } from 'react'
 import {db, auth} from '../../firebase/config'
 import firebase from 'firebase'
 import { AntDesign } from '@expo/vector-icons';
-import { TextInput } from 'react-native-web'
+
 
 class Posteo extends Component {
 
@@ -11,8 +11,7 @@ class Posteo extends Component {
         super(props)
         this.state = {
             elLike: false,
-            contador: props.data.likes.length,
-            
+            contador: props.data.likes.length
         }
     }
 
@@ -24,7 +23,6 @@ class Posteo extends Component {
             })
         }
     }
-   
 
     like(){
         db
@@ -57,9 +55,6 @@ class Posteo extends Component {
         .catch(err => console.log(err))
     }
 
-    
-
-
   render() {
     return (
       <View style={styles.container}>
@@ -70,9 +65,9 @@ class Posteo extends Component {
             source = {{uri: this.props.data.foto}}
             />
 
-            <Text style={styles.subtitle}>Descripcion :   {this.props.data.descripcion}   </Text>
-             <Text style={styles.subtitle}>Comentarios:     </Text>
-             <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id:this.props.id}) }>
+            <Text style={styles.subtitle}>Descripción: {this.props.data.descripcion}</Text>
+             <Text style={styles.subtitle}>Comentarios:</Text>
+             <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>
         </View>

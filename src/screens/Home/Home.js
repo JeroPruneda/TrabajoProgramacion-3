@@ -4,7 +4,7 @@ import {db, auth} from '../../firebase/config'
 import Posteo from '../../components/Posteo/Posteo'
 import Search from '../../components/Search/Search'
 import back from '../../../assets/back2.webp'
-import Opinion from '../../screens/Comentarios/Comentarios'
+
 
 
 class Home extends Component {
@@ -26,7 +26,7 @@ class Home extends Component {
                 docs.forEach(doc => {
                     posteos.push({
                         id: doc.id,
-                        data:doc.data()
+                        data: doc.data()
                     })
                 })
 
@@ -53,14 +53,8 @@ class Home extends Component {
             <FlatList
                 data={this.state.todosPosteos}
                 keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => 
-                
-                <Posteo navigation={this.props.navigation} id={item.id} data={item.data} />
-                
-                 }    
-                   
-                  />
-             
+                renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data} />}    
+            />
             </View>
         </View>
         )
