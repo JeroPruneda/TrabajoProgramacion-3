@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 import back from '../../../assets/back2.webp'
+import { Ionicons } from '@expo/vector-icons'; 
 
  class Profile extends Component {
     constructor(){
@@ -45,7 +46,7 @@ import back from '../../../assets/back2.webp'
   render() {
     return (
       <View style={styles.container} >
-        <Text >Tus Datos: </Text>
+        <Text style={styles.usuario}>Tus Datos: </Text>
          <FlatList
          data={this.state.miPerfil}
          keyExtractor={(item)=> item.id.toString()}
@@ -53,7 +54,7 @@ import back from '../../../assets/back2.webp'
           ({item}) => 
         <View style={styles.hijo}>
           <Text style={styles.usuario}>
-          Nombre de Usuario: {item.data.user}
+          Nombre de Usuario: {item.data.user} 
          </Text >
          <Text style={styles.usuario}>
           Descripcion de tu Perfil: {item.data.perfil}
@@ -62,21 +63,22 @@ import back from '../../../assets/back2.webp'
          Tu Gmail: {item.data.owner}
          </Text>
          <Text style={styles.usuario}>
-         Cantidad de Publicaciones: //hay que ver como se hace esto
+         Cantidad de Publicaciones: //hay que ver como se hace estoajustess
          </Text>
-         <Text style={styles.usuario}>
-         Cantidad de Likes://hay que ver como se hace esto /////////
-         LE PONGO ESTE backgroundColor PARA SABER A QUE LE ESTAMOS PONIENDO ESTILOS
-         </Text>
+         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar")}>
+         <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
+            </TouchableOpacity>
          </View>
+         
+         
         }
        />  
-        <View>
+        
           
             <TouchableOpacity onPress={() => this.cerrarSesion()}>
-                <Text style = {styles.registro} >Cerrar Sesion</Text>
+            <Text style = {styles.registro} >Cerrar Sesion</Text>
             </TouchableOpacity>
-        </View>
+        
       </View>
     )
   }
@@ -85,6 +87,7 @@ const styles = StyleSheet.create({
   container:{
   
     backgroundImage:`url(${back})`,
+    
     alignItems:'center',
     justifyContent:'center',
 
@@ -93,10 +96,9 @@ const styles = StyleSheet.create({
     registro: {
       backgroundColor: '#D13945',
       marginLeft: 30,
-      marginTop: 300,
+     
       marginBottom: 20,
       width: 120,
-      fontWeight: '600',
       paddingLeft: 15,
       borderWidth: 1,
       borderRadius: 7,
@@ -104,16 +106,17 @@ const styles = StyleSheet.create({
     usuario:{
       backgroundColor:'#E7E7E7',
       margin:10,
-      width:220,
+      width:300,
       borderWidth: 1,
-      borderRadius: 2,
+      borderRadius: 6,
+      padding:5
     }
     ,
     hijo:{
     
       backgroundColor:'#E7E7E7',
       margin:10,
-      width:300,
+      width:400,
       padding:10,
       borderWidth: 1,
       borderRadius:20

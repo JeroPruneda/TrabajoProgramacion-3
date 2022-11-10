@@ -15,16 +15,17 @@ export default class Comentarios extends Component {
   
     componentDidMount(){
       db.collection("Posts")
-      .orderBy("createdAt", "desc")
+      .doc("comentarios")
       .onSnapshot(
         docs => {
           let comentarios = []
           docs.forEach(jose => {
             comentarios.push({
-              opinion: jose.data().comentarios,
-              id:jose.id,
+             id:jose.id,
               data: jose.data()
             })
+
+
           })
           this.setState({
             comentario: comentarios
@@ -69,7 +70,7 @@ export default class Comentarios extends Component {
         <FlatList 
           data={this.state.comentario}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <Text>{item.opinion.comentario}</Text>}
+          renderItem={({item}) => <Text>{item.data.comentario}</Text>}
         />
       
       </View>
