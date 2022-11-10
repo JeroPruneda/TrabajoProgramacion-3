@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home/Home'
 import Posteos from '../screens/Posteos/Posteos'
 import Profile from '../screens/Profile/Profile'
-import Search from '../screens/Search/Search'
+import Search from "../screens/Search/Search"
 import {FontAwesome} from "@expo/vector-icons"
 const Tab = createBottomTabNavigator()
 import React from 'react'

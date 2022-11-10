@@ -12,7 +12,15 @@ export default class Comentarios extends Component {
             comentario: "",
         }
     }
-   
+  
+    componentDidMount(){
+      db.collection("Posts")
+      .orderBy("createdAt", "desc")
+      .onSnapshot(
+        
+
+      )
+    }
     comentar(text){
       db.collection("Posts")
       .doc(this.props.route.params.id)
@@ -34,9 +42,6 @@ export default class Comentarios extends Component {
   render() {
     return (
       <View>
-       
-      
-        
          <TextInput 
             style = {styles.input}
             keyboardType = "default"

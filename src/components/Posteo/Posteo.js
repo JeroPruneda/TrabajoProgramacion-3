@@ -8,6 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 class Posteo extends Component {
 
     constructor(props){
+        console.log(props);
         super(props)
         this.state = {
             elLike: false,
@@ -16,12 +17,13 @@ class Posteo extends Component {
     }
 
     componentDidMount(){
-        let myLike = this.props.data.likes.includes(auth.currentUser.email)
+        console.log(this.props);
+         let myLike = this.props.data.likes.includes(auth.currentUser.email)
         if(myLike){
             this.setState({
                 elLike:true
-            })
-        }
+            }) 
+         } 
     }
 
     like(){
