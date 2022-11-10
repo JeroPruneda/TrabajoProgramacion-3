@@ -21,6 +21,7 @@ export default class Comentarios extends Component {
           let comentarios = []
           docs.forEach(jose => {
             comentarios.push({
+              opinion: jose.data().comentarios,
               id:jose.id,
               data: jose.data()
             })
@@ -68,7 +69,7 @@ export default class Comentarios extends Component {
         <FlatList 
           data={this.state.comentario}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <Text>{item.data.descripcion}</Text>}
+          renderItem={({item}) => <Text>{item.opinion.comentario}</Text>}
         />
       
       </View>
