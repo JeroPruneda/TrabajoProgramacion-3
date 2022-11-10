@@ -19,6 +19,7 @@ export default class Comentarios extends Component {
       .onSnapshot(
         
 
+
       )
     }
     comentar(text){
