@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 import back from '../../../assets/back2.webp'
 import { Ionicons } from '@expo/vector-icons'; 
+import Editar from "../Editar/Editar";
 
  class Profile extends Component {
     constructor(){
@@ -73,6 +74,11 @@ import { Ionicons } from '@expo/vector-icons';
          
         }
        />  
+         {/* <FlatList
+                data={this.state.miPerfil}
+                keyExtractor={(item)=> item.id.toString()}
+                renderItem={({item}) => <Editar navigation={this.props.navigation} id={item.id} data={item.data} />}    
+            /> */}
         
           
             <TouchableOpacity onPress={() => this.cerrarSesion()}>
