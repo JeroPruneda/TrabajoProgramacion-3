@@ -86,12 +86,12 @@ import Posteos from '../Posteos/Posteos'
          <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar")}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
             </TouchableOpacity>
-            <Text >Tus Publicaciones </Text> 
+           
 
          </View>
          
         }
-       />  
+       />   <Text >Tus Publicaciones </Text> 
        <View 
         style={styles.container}
         >
