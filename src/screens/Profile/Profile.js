@@ -4,17 +4,31 @@ import { auth, db } from '../../firebase/config';
 import back from '../../../assets/back2.webp'
 import { Ionicons } from '@expo/vector-icons'; 
 import Editar from "../Editar/Editar";
+import Posteo from '../../components/Posteo/Posteo'
 
  class Profile extends Component {
     constructor(){
         super();
         this.state = {
             miPerfil:[],
+            misPosteos: [],
             cargando: true,
         }
     }
     
  componentDidMount(){ 
+  db.collection('Posts').where('owner', '==', auth.currentUser.email ).onSnapshot(docs => {
+    let miPosteos = []
+    docs.forEach(doc => {
+        miPosteos.push({
+            id: doc.id,
+            data:doc.data(),
+        })
+    })
+    this.setState({
+        misPosts: miPosteos,
+    })
+})
     db.collection("Users")
     .where("owner", "==", auth.currentUser.email)
     .onSnapshot(
@@ -64,7 +78,8 @@ import Editar from "../Editar/Editar";
          Tu Gmail: {item.data.owner}
          </Text>
          <Text style={styles.usuario}>
-         Cantidad de Publicaciones: //hay que ver como se hace estoajustess
+         Cantidad de Publicaciones: {this.state.misPosteos.length}
+        
          </Text>
          <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar")}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
@@ -74,6 +89,18 @@ import Editar from "../Editar/Editar";
          
         }
        />  
+       <View 
+        style={styles.container}
+        >
+            <FlatList
+                data={this.state.misPosteos}
+                keyExtractor={(item)=> item.id.toString()}
+                renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
+                
+            />
+ 
+
+        </View>
          {/* <FlatList
                 data={this.state.miPerfil}
                 keyExtractor={(item)=> item.id.toString()}
