@@ -12,18 +12,25 @@ class Posteo extends Component {
         super(props)
         this.state = {
             elLike: false,
-            contador: props.data.likes.length
+            contador: props.data.likes.length,
+            miPosteo: false
         }
     }
 
     componentDidMount(){
         console.log(this.props);
          let myLike = this.props.data.likes.includes(auth.currentUser.email)
+
         if(myLike){
             this.setState({
                 elLike:true
             }) 
          } 
+         if(this.props.data.owner === auth.currentUser.email){
+            this.setState({
+                miPosteo: true,
+            })
+        }
     }
 
     like(){
@@ -56,6 +63,13 @@ class Posteo extends Component {
         })
         .catch(err => console.log(err))
     }
+    borrarPosteo(){
+        db.collection('Posts')
+        .doc(this.props.id)
+        .delete()
+        .then(()=> {this.props.navigation.navigate('Profile')})
+        .catch(err=> console.log(err))
+    }
 
   render() {
     return (
@@ -72,6 +86,7 @@ class Posteo extends Component {
              <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>
+        
         </View>
         
         <View>
@@ -86,7 +101,14 @@ class Posteo extends Component {
                     <AntDesign name="like1" size={24} color="black" />
                 </TouchableOpacity>
         }
-
+        <View>
+            {
+                this.state.miPosteo ?
+                <TouchableOpacity onPress={()=> this.borrarPosteo()}>
+                <Text >BORRAR POSTEO</Text>
+                </TouchableOpacity> : ''
+            }
+            </View>
        
         </View>
     
