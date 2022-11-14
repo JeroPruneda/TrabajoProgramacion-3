@@ -9,25 +9,24 @@ export default class Comentarios extends Component {
     constructor(props){
         super(props);
         this.state = {
-            comentario: "",
+            comentarios: [],
+            comentario:""
+            
         }
     }
   
     componentDidMount(){
+      console.log(this.props)
       db.collection("Posts")
-      .doc("comentarios")
+      .doc(this.props.route.params.id)
       .onSnapshot(
         docs => {
-          let comentarios = []
-          docs.forEach(jose => {
-            comentarios.push({
-             id:jose.id,
-              data: jose.data()
-            })
-          })
+
           this.setState({
-            comentario: comentarios
-          })
+            id:docs.id,
+            comentarios: docs.data().comentarios,
+           
+          },()=> console.log(this.state.comentario))
         }
       )
     }
@@ -44,28 +43,29 @@ export default class Comentarios extends Component {
       .then(resp => {
         this.setState({
             comentario: ""
-        })
+        },()=> console.log(this.state.comentario))
     })
     .catch(err=> console.log(err))
   }
     
   render() {
     return (
+     
       <View>
          <TextInput 
             style = {styles.input}
             keyboardType = "default"
             placeholder = "Comentar"
             onChangeText={ (text) => this.setState({comentario: text})}
-            value= {this.state.comentario}
+           
             />
         <TouchableOpacity onPress={() => this.comentar(this.state.comentario)}>
           <Text>Comentar</Text>
         </TouchableOpacity>
         <FlatList 
-          data={this.state.comentario}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <Text>{item.data.comentario}</Text>}
+          data={this.state.comentarios}
+          keyExtractor={(item) => item.createdAt}
+          renderItem={({item}) => <Text>Comentarios: {item.comentario}</Text>}
         />
       
       </View>

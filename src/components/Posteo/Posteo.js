@@ -83,7 +83,7 @@ class Posteo extends Component {
             />
 
             <Text style={styles.subtitle}>Descripción: {this.props.data.descripcion}</Text>
-             <Text style={styles.subtitle}>Comentarios:</Text>
+             <Text style={styles.subtitle}>Comentarios: </Text>
              <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>
@@ -106,7 +106,7 @@ class Posteo extends Component {
             {
                 this.state.miPosteo ?
                 <TouchableOpacity onPress={()=> this.eliminarPosteo()}>
-                <Text >Borrar tu posteo</Text>
+                <Text >BORRAR <AntDesign name="delete" size={20} color="black" /></Text>
                 </TouchableOpacity> : ''
             }
             </View>

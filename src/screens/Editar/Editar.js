@@ -18,7 +18,7 @@ class Editar extends Component {
     componentDidMount(){
       auth.currentUser.updatePassword(newPassword)
         .then(function() {
-        
+         
         })
         .catch(function(error) {
         
