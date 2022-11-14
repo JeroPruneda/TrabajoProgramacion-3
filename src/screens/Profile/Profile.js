@@ -109,13 +109,21 @@ import Posteo from '../../components/Posteo/Posteo'
 }
 const styles = StyleSheet.create({
   container:{
-  
+  flex:1,
     backgroundImage:`url(${back})`,
     
     alignItems:'center',
     justifyContent:'center',
 
    
+},container1:{
+  flex:2,
+  backgroundColor:'red',
+  height:4000,
+  alignItems:'center',
+  justifyContent:'center',
+
+ 
 },
     registro: {
       backgroundColor: '#D13945',
