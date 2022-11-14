@@ -3,23 +3,35 @@ import React, { Component } from 'react'
 import back from '../../../assets/back2.webp'
 import { auth, db } from "../../firebase/config"
 import Profile from '../Profile/Profile'
+
 class Editar extends Component {
     constructor(props){
         super(props);
         console.log(this.props);
         this.state = {
-           mail: "",
            user: "",
            perfil: ""
            
         }
     }
-    //esto es muy parecido a lo de likes pero nose como pasarle las props 
+
+    componentDidMount(){
+      auth.currentUser.updatePassword(newPassword)
+        .then(function() {
+        
+        })
+        .catch(function(error) {
+        
+        })
+
+    }
+    
+  
+
     actualizar(){
       db.collection("Users")
-      .doc("aca habria que llamar al id del documento (email) que ni idea ")
+      .doc(this.props.route.params.id)
       .update({
-        owner: this.state.mail,
         user: this.state.user,
         perfil: this.state.perfil
       })
@@ -28,16 +40,10 @@ class Editar extends Component {
       })
     }
  
-       
+
   render() {
     return (
       <View style={styles.container} >
-        <TextInput 
-        style = {styles.input}
-        onChangeText={ (text) => this.setState({ mail: text})}
-        placeholder = "Editar mail"
-        value= {this.state.mail}
-        />
         <TextInput 
         style = {styles.input}
         onChangeText={ (text) => this.setState({ user: text})}

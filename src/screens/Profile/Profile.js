@@ -1,11 +1,10 @@
-import { Text, View, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
 import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 import back from '../../../assets/back2.webp'
 import { Ionicons } from '@expo/vector-icons'; 
-import Editar from "../Editar/Editar";
 import Posteo from '../../components/Posteo/Posteo'
-import Posteos from '../Posteos/Posteos'
+
 
  class Profile extends Component {
     constructor(){
@@ -76,52 +75,34 @@ import Posteos from '../Posteos/Posteos'
           Descripcion de tu Perfil: {item.data.perfil}
          </Text>
          <Text style={styles.usuario}>
-         Tu Gmail: {item.data.owner}
+         Tu Email: {item.data.owner}
          </Text>
          <Text style={styles.usuario}>
          Cantidad de Publicaciones: {this.state.misPosteos.length}
-        
          </Text>
            
-         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar")}>
+         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar", {id: this.state.miPerfil[0].id })}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
-            </TouchableOpacity>
-           
+         </TouchableOpacity>
+
+        
 
          </View>
          
         }
-       />   {/* <Text >Tus Publicaciones </Text>  */}
-       <View 
-        style={styles.container}
-        >
-            <FlatList
-                data={this.state.misPosteos}
-                keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => 
-
-                <View style={styles.container2}
-                         >
-                <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>
-                </View>
-              }
-                
+       />  
+       <View style={styles.container}>
+       <Text >Tus Publicaciones </Text> 
+          <FlatList
+            data={this.state.misPosteos}
+            keyExtractor={(item)=> item.id.toString()}
+            renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
             />
- 
 
         </View>
-      
-         {/* <FlatList
-                data={this.state.miPerfil}
-                keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => <Editar navigation={this.props.navigation} id={item.id} data={item.data} />}    
-            /> */}
-        
-          
             <TouchableOpacity onPress={() => this.cerrarSesion()}>
             <Text style = {styles.registro} >Cerrar Sesion</Text>
             </TouchableOpacity>
-        
       </View>
     )
   }
