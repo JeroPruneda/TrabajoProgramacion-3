@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import back from '../../../assets/back2.webp'
 import { auth, db } from "../../firebase/config"
 import Profile from '../Profile/Profile'
+
 class Editar extends Component {
     constructor(props){
         super(props);
@@ -13,10 +14,23 @@ class Editar extends Component {
            
         }
     }
-    //esto es muy parecido a lo de likes pero nose como pasarle las props 
+
+    componentDidMount(){
+      auth.currentUser.updatePassword(newPassword)
+        .then(function() {
+        
+        })
+        .catch(function(error) {
+        
+        })
+
+    }
+    
+  
+
     actualizar(){
       db.collection("Users")
-      .doc(this.props.data.id)
+      .doc(this.props.route.params.id)
       .update({
         user: this.state.user,
         perfil: this.state.perfil
@@ -26,7 +40,7 @@ class Editar extends Component {
       })
     }
  
-       
+
   render() {
     return (
       <View style={styles.container} >

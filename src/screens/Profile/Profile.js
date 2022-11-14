@@ -81,7 +81,7 @@ import Posteo from '../../components/Posteo/Posteo'
          Cantidad de Publicaciones: {this.state.misPosteos.length}
          </Text>
            
-         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar")}>
+         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar", {id: this.state.miPerfil[0].id })}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
          </TouchableOpacity>
 
