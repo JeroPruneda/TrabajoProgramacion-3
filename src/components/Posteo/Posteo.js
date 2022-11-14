@@ -63,7 +63,7 @@ class Posteo extends Component {
         })
         .catch(err => console.log(err))
     }
-    borrarPosteo(){
+    eliminarPosteo(){
         db.collection('Posts')
         .doc(this.props.id)
         .delete()
@@ -104,8 +104,8 @@ class Posteo extends Component {
         <View>
             {
                 this.state.miPosteo ?
-                <TouchableOpacity onPress={()=> this.borrarPosteo()}>
-                <Text >BORRAR POSTEO</Text>
+                <TouchableOpacity onPress={()=> this.eliminarPosteo()}>
+                <Text >Borrar tu posteo</Text>
                 </TouchableOpacity> : ''
             }
             </View>
