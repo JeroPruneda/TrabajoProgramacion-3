@@ -8,7 +8,6 @@ class Editar extends Component {
         super(props);
         console.log(this.props);
         this.state = {
-           mail: "",
            user: "",
            perfil: ""
            
@@ -19,7 +18,6 @@ class Editar extends Component {
       db.collection("Users")
       .doc(this.props.data.id)
       .update({
-        owner: this.state.mail,
         user: this.state.user,
         perfil: this.state.perfil
       })
@@ -32,12 +30,6 @@ class Editar extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <TextInput 
-        style = {styles.input}
-        onChangeText={ (text) => this.setState({ mail: text})}
-        placeholder = "Editar mail"
-        value= {this.state.mail}
-        />
         <TextInput 
         style = {styles.input}
         onChangeText={ (text) => this.setState({ user: text})}

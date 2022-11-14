@@ -24,16 +24,11 @@ export default class Comentarios extends Component {
              id:jose.id,
               data: jose.data()
             })
-
-
           })
           this.setState({
             comentario: comentarios
           })
         }
-        
-
-
       )
     }
     comentar(text){
