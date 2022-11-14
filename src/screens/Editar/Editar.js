@@ -9,7 +9,9 @@ class Editar extends Component {
         console.log(this.props);
         this.state = {
            mail: "",
-           contraseña:""
+           user: "",
+           perfil: ""
+           
         }
     }
     //esto es muy parecido a lo de likes pero nose como pasarle las props 
@@ -17,7 +19,9 @@ class Editar extends Component {
       db.collection("Users")
       .doc("aca habria que llamar al id del documento (email) que ni idea ")
       .update({
-        propiedad: mail
+        owner: this.state.mail,
+        user: this.state.user,
+        perfil: this.state.perfil
       })
       .then(()=>{
         {this.props.navigation.navigate("Profile")}
@@ -31,8 +35,20 @@ class Editar extends Component {
         <TextInput 
         style = {styles.input}
         onChangeText={ (text) => this.setState({ mail: text})}
-        placeholder = "Cambiar email"
+        placeholder = "Editar mail"
         value= {this.state.mail}
+        />
+        <TextInput 
+        style = {styles.input}
+        onChangeText={ (text) => this.setState({ user: text})}
+        placeholder = "Editar nombre de usuario"
+        value= {this.state.user}
+        />
+        <TextInput 
+        style = {styles.input}
+        onChangeText={ (text) => this.setState({ perfil: text})}
+        placeholder = "Editar descripción"
+        value= {this.state.perfil}
         />
          <View>
             <TouchableOpacity  onPress={() => this.actualizar()}>
@@ -40,13 +56,6 @@ class Editar extends Component {
             </TouchableOpacity>
         </View>
     </View>
-
-        
-        
-          
-            
-        
-      
     )
   }
 }
