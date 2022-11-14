@@ -8,7 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 class Posteo extends Component {
 
     constructor(props){
-        console.log(props);
+        console.log(props.id);
         super(props)
         this.state = {
             elLike: false,
@@ -37,6 +37,7 @@ class Posteo extends Component {
         db
         .collection('Posts')
         .doc(this.props.id)
+      
         .update({
             likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
         })

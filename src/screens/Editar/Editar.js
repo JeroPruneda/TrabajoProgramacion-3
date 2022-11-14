@@ -17,7 +17,7 @@ class Editar extends Component {
     //esto es muy parecido a lo de likes pero nose como pasarle las props 
     actualizar(){
       db.collection("Users")
-      .doc("aca habria que llamar al id del documento (email) que ni idea ")
+      .doc(this.props.data.id)
       .update({
         owner: this.state.mail,
         user: this.state.user,
