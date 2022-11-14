@@ -8,7 +8,6 @@ class Editar extends Component {
         super(props);
         console.log(this.props);
         this.state = {
-           mail: "",
            user: "",
            perfil: ""
            
@@ -17,9 +16,8 @@ class Editar extends Component {
     //esto es muy parecido a lo de likes pero nose como pasarle las props 
     actualizar(){
       db.collection("Users")
-      .doc("aca habria que llamar al id del documento (email) que ni idea ")
+      .doc(" ")
       .update({
-        owner: this.state.mail,
         user: this.state.user,
         perfil: this.state.perfil
       })
@@ -32,12 +30,6 @@ class Editar extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <TextInput 
-        style = {styles.input}
-        onChangeText={ (text) => this.setState({ mail: text})}
-        placeholder = "Editar mail"
-        value= {this.state.mail}
-        />
         <TextInput 
         style = {styles.input}
         onChangeText={ (text) => this.setState({ user: text})}
