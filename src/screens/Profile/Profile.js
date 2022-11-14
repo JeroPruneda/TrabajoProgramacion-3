@@ -98,7 +98,13 @@ import Posteos from '../Posteos/Posteos'
             <FlatList
                 data={this.state.misPosteos}
                 keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
+                renderItem={({item}) => 
+
+                <View style={styles.container2}
+                         >
+                <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>
+                </View>
+              }
                 
             />
  
@@ -122,13 +128,21 @@ import Posteos from '../Posteos/Posteos'
 }
 const styles = StyleSheet.create({
   container:{
-  
+  flex:1,
     backgroundImage:`url(${back})`,
     
     alignItems:'center',
     justifyContent:'center',
 
    
+},container1:{
+  flex:2,
+  backgroundColor:'red',
+  height:4000,
+  alignItems:'center',
+  justifyContent:'center',
+
+ 
 },
     registro: {
       backgroundColor: '#D13945',
