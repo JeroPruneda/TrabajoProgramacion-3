@@ -83,7 +83,7 @@ class Posteo extends Component {
             />
 
             <Text style={styles.subtitle}>Descripción: {this.props.data.descripcion}</Text>
-             <Text style={styles.subtitle}>Comentarios: </Text>
+             
              <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>

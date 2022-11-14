@@ -3,14 +3,15 @@ import React, { Component } from 'react'
 import { auth, db } from '../../firebase/config';
 import firebase from 'firebase'
 import { TextInput, TouchableOpacity } from 'react-native-web';
-
+import back from '../../../assets/back2.webp'
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default class Comentarios extends Component {
     constructor(props){
         super(props);
         this.state = {
             comentarios: [],
-            comentario:""
+            opinion:""
             
         }
     }
@@ -43,7 +44,7 @@ export default class Comentarios extends Component {
       .then(resp => {
         this.setState({
             comentario: ""
-        },()=> console.log(this.state.comentario))
+        },()=> console.log(this.state.opinion))
     })
     .catch(err=> console.log(err))
   }
@@ -51,21 +52,21 @@ export default class Comentarios extends Component {
   render() {
     return (
      
-      <View>
+      <View style={styles.container}>
          <TextInput 
             style = {styles.input}
             keyboardType = "default"
             placeholder = "Comentar"
-            onChangeText={ (text) => this.setState({comentario: text})}
+            onChangeText={ (text) => this.setState({opinion: text})}
            
             />
-        <TouchableOpacity onPress={() => this.comentar(this.state.comentario)}>
-          <Text>Comentar</Text>
+        <TouchableOpacity style={styles.registro} onPress={() => this.comentar(this.state.opinion)}>
+        <MaterialCommunityIcons name="send-circle" size={24} color="blue" />
         </TouchableOpacity>
-        <FlatList 
+         <FlatList 
           data={this.state.comentarios}
           keyExtractor={(item) => item.createdAt}
-          renderItem={({item}) => <Text>Comentarios: {item.comentario}</Text>}
+          renderItem={({item}) => <Text  style={styles.subtitle}>{item.owner}: {item.comentario}</Text>}
         />
       
       </View>
@@ -91,6 +92,33 @@ const styles = StyleSheet.create({
     width:300,
     borderWidth: 1,
     borderRadius: 2,
-  }
+  },
+  subtitle:{
+    backgroundColor:'#E7E7E7',
+    margin:10,
+    width:250,
+    padding:10,
+    borderWidth: 1,
+    borderRadius:20
+  }, container:{
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundImage:`url(${back})`
+},  palabra:{
+  backgroundColor: "gray",
+  textAlign:"center",
+  margin:0,
+  width: 200,
+
+},registro: {
+  backgroundColor: '#2C719C',
+  margin:10,
+  marginLeft:164,
+  width: 35,
+  paddingLeft: 5,
+  borderWidth: 1,
+  borderRadius: 7,
+},
 
 })
