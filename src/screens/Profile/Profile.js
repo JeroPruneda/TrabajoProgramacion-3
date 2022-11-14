@@ -91,7 +91,7 @@ import Posteos from '../Posteos/Posteos'
          </View>
          
         }
-       />   <Text >Tus Publicaciones </Text> 
+       />   {/* <Text >Tus Publicaciones </Text>  */}
        <View 
         style={styles.container}
         >
@@ -130,19 +130,19 @@ const styles = StyleSheet.create({
   container:{
   flex:1,
     backgroundImage:`url(${back})`,
-    
     alignItems:'center',
     justifyContent:'center',
 
    
-},container1:{
+},container2:{
   flex:2,
-  backgroundColor:'red',
-  height:4000,
-  alignItems:'center',
-  justifyContent:'center',
+  width: 350, 
+  height: 1000, 
+  margin:20,
+  
+  
+  
 
- 
 },
     registro: {
       backgroundColor: '#D13945',

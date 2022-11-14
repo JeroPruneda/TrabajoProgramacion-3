@@ -60,7 +60,7 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-     container:{
+    container:{
         flex:1,
         alignItems:'center',
         justifyContent:'center',
