@@ -5,6 +5,7 @@ import back from '../../../assets/back2.webp'
 import { Ionicons } from '@expo/vector-icons'; 
 import Editar from "../Editar/Editar";
 import Posteo from '../../components/Posteo/Posteo'
+import Posteos from '../Posteos/Posteos'
 
  class Profile extends Component {
     constructor(){
@@ -26,7 +27,7 @@ import Posteo from '../../components/Posteo/Posteo'
         })
     })
     this.setState({
-        misPosts: miPosteos,
+        misPosteos: miPosteos,
     })
 })
     db.collection("Users")
@@ -81,11 +82,13 @@ import Posteo from '../../components/Posteo/Posteo'
          Cantidad de Publicaciones: {this.state.misPosteos.length}
         
          </Text>
+           
          <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar")}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
             </TouchableOpacity>
+            <Text >Tus Publicaciones </Text> 
+
          </View>
-         
          
         }
        />  
@@ -101,6 +104,7 @@ import Posteo from '../../components/Posteo/Posteo'
  
 
         </View>
+      
          {/* <FlatList
                 data={this.state.miPerfil}
                 keyExtractor={(item)=> item.id.toString()}
