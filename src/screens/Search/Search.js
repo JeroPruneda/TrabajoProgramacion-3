@@ -1,74 +1,93 @@
-import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import React, { Component } from 'react'
-import { auth, db } from '../../firebase/config';
-import firebase from 'firebase'
 
-export default class Search extends Component {
-    constructor(){
-        super();
-        this.state = {
-            valor: ""
-        }
-    }
-  eSubmit(event){
-    event.preventDefault()
-  }
+import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image,  FlatList} from 'react-native'
+import React, { Component} from 'react'
+import {db} from '../../firebase/config'
+import {auth} from '../../firebase/config'
+import { Feather, Entypo } from "@expo/vector-icons";
 
-  buscar(){
-    db.collection("Users").onSnapshot(
-      docs => {
-        let buscador = []
-        docs.forEach(doc => {
-            buscador.push({
-                id: doc.id,
-                data:doc.data()
-            })
-        })
+class Search extends Component {
 
-        this.setState({
-            valor: buscador
-        })  
+  constructor(props){
+      super(props)
+      this.state={
+          usuarios:[],
+          busqueda: '',
       }
-    )
   }
 
-  controlarCambios(event){
+
+  componentDidMount(){
+      db.collection('Users').onSnapshot(docs => {
+          let buscarUsuarios = []
+          docs.forEach(doc => {
+              buscarUsuarios.push({
+                  id: doc.id,
+                  data:doc.data(),
+              })
+          })
+          this.setState({
+              usuarios: buscarUsuarios
+          })
+      })
+     
+  }
+
+  buscar(text){
+      let filtrar = this.state.usuarios.filter(elm => 
+          elm.data.owner.toUpperCase().includes(text.toUpperCase()))
+
       this.setState({
-          valor: event.target.value
-      }, () => this.buscar(this.state.valor)
-    )
+          usuarios: text,
+          usuarios: filtrar, 
+      })
   }
+
   render() {
-    return (
-      <View>
+      console.log(this.state);
+      return (
+      <>
 
-        <Text>Search</Text>
-        <TextInput 
-        placeholder='Buscar usuarios'
-        style={styles.input}
-        keyboardType = "default"
-        onChangeText={(text) => this.controlarCambios(text)}
-        value = {this.state.valor}
-        />
-        <TouchableOpacity onPress={(event) => this.eSubmit(event)}>
-            <Text>Buscar</Text>
-        </TouchableOpacity>
+   
 
-      </View>
-    )
-  }
+   <View > 
+<View > 
+
+
+  <TextInput 
+           onChangeText={ text => this.setState( {busqueda:text} )}
+           placeholder='Ingresa tu busqueda'
+           value={this.state.busqueda}>
+  </TextInput>
+  
+
+
+  <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
+  <Text style={styles.buscar}> Buscar</Text>
+  </TouchableOpacity>
+
+
+</View>   
+
+       
+       <FlatList 
+        data={this.state.usuarios}
+        keyExtractor={(item) => item.id}
+        renderItem= {({item}) => <Text>{item.data.owner}</Text>}
+
+      />  
+</View>
+
+  </>
+  )
 }
+}
+
+
+
+
 const styles = StyleSheet.create({
-    input: {
-      fontSize: 18,
-      marginTop: 20,
-      marginLeft: 20,
-      marginRight: 20, 
-      fontWeight: '600',
-      paddingLeft: 20,
-      borderWidth: 1,
-      borderRadius: 7,
-      paddingRight: 12,
-    },
+   
   
   })
+
+  export default Search
