@@ -136,12 +136,3 @@ const styles = StyleSheet.create({
 })
  
 export default    PerfilDeOtros
-/* export default class Profiles extends Component {
-  render() {
-    return (
-      <View>
-        <Text>Profiles</Text>
-      </View>
-    )
-  }
-} */
