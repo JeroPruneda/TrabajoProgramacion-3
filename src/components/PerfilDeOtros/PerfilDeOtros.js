@@ -4,6 +4,7 @@ import { Text, View, FlatList, StyleSheet, Image} from 'react-native'
 import {db, auth} from '../../firebase/config'
 import back from '../../../assets/back2.webp'
 import Posteo from '../../components/Posteo/Posteo'
+
  
 class PerfilDeOtros extends Component {
     constructor(props){
@@ -43,6 +44,7 @@ class PerfilDeOtros extends Component {
     render() {
         
         return (
+          
           <View style={styles.container} >
         <Text style={styles.usuario}>Datos del Perfil: </Text>
          <FlatList

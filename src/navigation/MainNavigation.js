@@ -5,7 +5,7 @@ import Register from "../screens/Register/Register";
 import TabNavigation from "./TabNavigation";
 import Comentarios from "../screens/Comentarios/Comentarios";
 import Editar from "../screens/Editar/Editar";
-import Profiles from "../components/PerfilDeOtros/PerfilDeOtros";
+import PerfilDeOtros from "../components/PerfilDeOtros/PerfilDeOtros";
 const Stack = createNativeStackNavigator()
 
 function MainNavigation(){
@@ -16,7 +16,7 @@ function MainNavigation(){
                 <Stack.Screen name="Register" component={Register}/>
                 <Stack.Screen name="Comentarios" component={Comentarios}/>
                 <Stack.Screen name="Editar" component={Editar}/>
-                <Stack.Screen name = "PerfilDeOtros" component={Profiles}/>
+                <Stack.Screen name = "PerfilDeOtros" component={PerfilDeOtros}/>
                 <Stack.Screen name="TabNavigation" component={TabNavigation} options = {{headerShown: false}}/>
                 
             </Stack.Navigator>
