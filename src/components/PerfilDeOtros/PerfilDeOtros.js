@@ -11,23 +11,28 @@ class PerfilDeOtros extends Component {
         super(props)
         console.log(props);
         this.state={
-            usuarios:{},
+            usuarios:[],
             susPosteos: [],
             userId: props.route.params.id,
         }
     }
  
     componentDidMount(){
-        db.collection('Users').where('owner', '==', this.props.route.params.email)
+        db.collection('Users').where('owner', '==', auth.currentUser.email)
         .onSnapshot(docs =>{ 
+          let oUsuarios = []
            docs.forEach(doc => {
-
-            
-            this.setState({usuarios: doc.data()})
+             oUsuarios.push({
+               id: doc.id,
+               data: doc.data()
+             })
+            this.setState({
+              usuarios: oUsuarios
+            })
            })
         })
        
-        db.collection('Posts').where('owner', '==', this.props.route.params.email).onSnapshot(docs => {
+        db.collection('Posts').where('owner', '==', auth.currentUser.email).onSnapshot(docs => {
             let posteos = []
             docs.forEach(doc => {
                 posteos.push({
