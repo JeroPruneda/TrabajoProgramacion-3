@@ -15,16 +15,16 @@ class Editar extends Component {
         }
     }
 
-    componentDidMount(){
-      auth.currentUser.updatePassword(newPassword)
-        .then(function() {
+    // componentDidMount(){
+    //   auth.currentUser.updatePassword(newPassword)
+    //     .then(function() {
          
-        })
-        .catch(function(error) {
+    //     })
+    //     .catch(function(error) {
         
-        })
+    //     })
 
-    }
+    // }
     
   
 
