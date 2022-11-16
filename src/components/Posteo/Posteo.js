@@ -85,7 +85,11 @@ class Posteo extends Component {
             <Text style={styles.nombre}>{this.props.data.owner}</Text>
             </TouchableOpacity>
             :
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros",
+             {gmail: this.props.data.owner,
+            descripcion :this.props.data.descripcion,
+            foto :this.props.data.foto,}) 
+             }>
             <Text style={styles.nombre}>{this.props.data.owner}</Text>
             </TouchableOpacity>
         }
