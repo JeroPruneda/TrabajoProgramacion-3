@@ -5,7 +5,7 @@ import Register from "../screens/Register/Register";
 import TabNavigation from "./TabNavigation";
 import Comentarios from "../screens/Comentarios/Comentarios";
 import Editar from "../screens/Editar/Editar";
-import PerfilDeOtros from "../components/PerfilDeOtros/PerfilDeOtros";
+import PerfilDeOtros from "../screens/PerfilDeOtros/PerfilDeOtros";
 const Stack = createNativeStackNavigator()
 
 function MainNavigation(){

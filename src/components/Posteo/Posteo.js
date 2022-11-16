@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import { AntDesign } from '@expo/vector-icons';
 
 
+
 class Posteo extends Component {
 
     constructor(props){
@@ -75,6 +76,14 @@ class Posteo extends Component {
   render() {
     return (
       <View style={styles.container}>
+       <TouchableOpacity onPress={()=> this.props.navigation.navigate("HomeNavigation", {
+                screen: ' OtrosPerfiles',
+                params:{
+                    email: this.props.data.email
+                }
+        }) }>
+         <Text style={styles.nombre}>{this.props.data.owner}</Text>
+         </TouchableOpacity>
         <View>
             
             <Image 
@@ -158,7 +167,15 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius:20,
        
-      }
+      },
+      nombre:{
+        backgroundColor:'#E7E7E7',
+        margin:10,
+        width:150,
+        padding:10,
+        borderRadius:20,
+       
+      },
     
     
 })
