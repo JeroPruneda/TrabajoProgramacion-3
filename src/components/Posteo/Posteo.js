@@ -13,7 +13,8 @@ class Posteo extends Component {
         this.state = {
             elLike: false,
             contador: props.data.likes.length,
-            miPosteo: false
+            miPosteo: false,
+            contadorComentarios: props.data.comentarios.length
         }
     }
 
@@ -81,9 +82,24 @@ class Posteo extends Component {
             style = {styles.camara}
             source = {{uri: this.props.data.foto}}
             />
-
+           
+            
             <Text style={styles.subtitle}>Descripción: {this.props.data.descripcion}</Text>
              
+            {
+            this.state.contadorComentarios === 0 ? 
+            <View>
+                {/* <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
+            <Text>Agregar comentario</Text>
+            </TouchableOpacity> */}
+
+                <Text>Aún no hay comentarios</Text>
+            </View>
+            :
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
+            <Text>Ver los {this.state.contadorComentarios} comentarios</Text>
+            </TouchableOpacity>
+        }
              <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
             <Text>Agregar comentario</Text>
         </TouchableOpacity>
