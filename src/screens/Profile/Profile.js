@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Posteo from '../../components/Posteo/Posteo'
 
 
+
  class Profile extends Component {
     constructor(){
         super();

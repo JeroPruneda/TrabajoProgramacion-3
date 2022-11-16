@@ -6,6 +6,7 @@ import TabNavigation from "./TabNavigation";
 import Comentarios from "../screens/Comentarios/Comentarios";
 import Editar from "../screens/Editar/Editar";
 import PerfilDeOtros from "../screens/PerfilDeOtros/PerfilDeOtros";
+import Profile from "../screens/Profile/Profile";
 const Stack = createNativeStackNavigator()
 
 function MainNavigation(){
@@ -17,6 +18,7 @@ function MainNavigation(){
                 <Stack.Screen name="Comentarios" component={Comentarios}/>
                 <Stack.Screen name="Editar" component={Editar}/>
                 <Stack.Screen name = "PerfilDeOtros" component={PerfilDeOtros}/>
+                <Stack.Screen name = "Profile" component={Profile}/>
                 <Stack.Screen name="TabNavigation" component={TabNavigation} options = {{headerShown: false}}/>
                 
             </Stack.Navigator>

@@ -76,15 +76,24 @@ class Posteo extends Component {
 
   render() {
     return (
+        
       <View style={styles.container}>
-       <TouchableOpacity onPress={()=> this.props.navigation.navigate("HomeNavigation", {
-                screen: ' OtrosPerfiles',
-                params:{
-                    email: this.props.data.email
-                }
-        }) }>
-         <Text style={styles.nombre}>{this.props.data.owner}</Text>
-         </TouchableOpacity>
+         {
+            
+            this.state.miPosteo  ? 
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile", {id: this.props.id}) }>
+            <Text style={styles.nombre}>{this.props.data.owner}</Text>
+            </TouchableOpacity>
+            :
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>
+            <Text style={styles.nombre}>{this.props.data.owner}</Text>
+            </TouchableOpacity>
+        }
+       {/*  <TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>
+            <Text style={styles.nombre}>{this.props.data.owner}</Text>
+        </TouchableOpacity> */}
+      
+         
         <View>
             
             <Image 
@@ -98,9 +107,7 @@ class Posteo extends Component {
             {
             this.state.contadorComentarios === 0 ? 
             <View>
-                {/* <TouchableOpacity onPress={() => this.props.navigation.navigate("Comentarios", {id: this.props.id}) }>
-            <Text>Agregar comentario</Text>
-            </TouchableOpacity> */}
+                
 
                 <Text>Aún no hay comentarios</Text>
             </View>

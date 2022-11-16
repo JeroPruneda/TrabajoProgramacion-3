@@ -64,19 +64,13 @@ class Search extends Component {
   <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
   <Text style={styles.buscar}> Buscar</Text>
   </TouchableOpacity>
-  
 
 </View>   
-
-       
-       <FlatList 
+      <FlatList 
         data={this.state.usuarios}
         keyExtractor={(item) => item.id}
         renderItem= {({item}) => <Text><TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>{item.data.owner}</TouchableOpacity></Text>}
-        
-      />  
-      
-        
+      />         
 </View>
 
   </>
