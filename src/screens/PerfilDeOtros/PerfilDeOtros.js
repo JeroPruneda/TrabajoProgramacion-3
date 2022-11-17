@@ -42,17 +42,13 @@ class PerfilDeOtros extends Component {
      console.log(this.state.fotos);
         return (
           
-          <View style={styles.hijo}>
-            <Text style={styles.usuario}>Mail: {this.state.info.owner}</Text>
+          <View style={styles.container}>
+            <Text style={styles.usuario}>Estas en el perfil de: {this.state.info.owner}</Text>
             <Text style={styles.usuario}>Descripción: {this.state.info.perfil}</Text>
             <Text style={styles.usuario}>Username: {this.state.info.user}</Text>
       
-            <Text>Fotos:</Text>
-            <Image 
-            style = {styles.camara}
-            source = {{uri: this.props.route.params.foto}}
-
-          />
+            <Text>Sus publicaciones:</Text>
+            
           
           <FlatList 
           data = {this.state.fotos}

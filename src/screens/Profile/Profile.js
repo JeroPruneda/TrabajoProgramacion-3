@@ -63,15 +63,16 @@ import Posteo from '../../components/Posteo/Posteo'
     console.log(this.state.miPerfil);
     return (
       <View style={styles.container} >
-        <Text style={styles.usuario}>Tus Datos: </Text>
+     
+        <Text style={styles.palabra} >Tus Datos: </Text>
        
         {
          this.state.cargando ? <Text>Cargando</Text>
          :
          <>
-         <Text>{this.state.miPerfil.data.owner}</Text>
-         <Text>{this.state.miPerfil.data.user}</Text>
-         <Text>{this.state.miPerfil.data.user}</Text>
+         <Text style={styles.usuario}>Tu mail: {this.state.miPerfil.data.owner}</Text>
+         <Text style={styles.usuario}>Nombre de Usuario: {this.state.miPerfil.data.user}</Text>
+         <Text style={styles.usuario}>Descripción: {this.state.miPerfil.data.perfil}</Text>
 
          </>
         }
@@ -79,10 +80,10 @@ import Posteo from '../../components/Posteo/Posteo'
          <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar", {id: this.state.miPerfil.id })}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
          </TouchableOpacity>
-
-       <Text >Tus Publicaciones </Text> 
+       
+       <Text style={styles.palabra} >Publicaciones </Text> 
         <FlatList
-          style= {styles.container}
+          style= {styles.container3}
           data={this.state.misPosteos}
           keyExtractor={(item)=> item.id.toString()}
           renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
@@ -90,26 +91,23 @@ import Posteo from '../../components/Posteo/Posteo'
         <TouchableOpacity onPress={() => this.cerrarSesion()}>
           <Text style = {styles.registro} >Cerrar Sesion</Text>
         </TouchableOpacity>
-      </View>
+      
+        </View>
     )
   }
 }
 const styles = StyleSheet.create({
   container:{
-  flex:1
-  
+   flex:1,
+   backgroundImage:`url(${back})`,
+    alignItems:'center',
+    justifyContent:'center',
 
    
-},container2:{
-  flex:2,
-  width: 350, 
+},container3:{
+  flex:2, 
   height: 1000, 
-  margin:20,
-  
-  
-  
-
-},
+  },
     registro: {
       backgroundColor: '#D13945',
       marginLeft: 30,
@@ -138,7 +136,15 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderRadius:20
       
-    }
+    },palabra:{
+      backgroundColor: "gray",
+      textAlign:"center",
+      width: 100,
+      margin:10,
+      marginLeft:40,
+      borderRadius:5,
+      borderWidth:2,
+  },
     
 
    
