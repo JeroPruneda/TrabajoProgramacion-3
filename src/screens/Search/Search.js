@@ -43,7 +43,7 @@ class Search extends Component {
   }
 
   render() {
-      console.log(this.state);
+      console.log(this.state.usuarios);
       return (
       <>
 
@@ -69,7 +69,10 @@ class Search extends Component {
       <FlatList 
         data={this.state.usuarios}
         keyExtractor={(item) => item.id}
-        renderItem= {({item}) => <Text><TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>{item.data.owner}</TouchableOpacity></Text>}
+        renderItem= {({item}) => <Text><TouchableOpacity 
+        onPress={() => this.props.navigation.navigate("PerfilDeOtros",
+         {gmail: item.data.owner,}) }>
+            {item.data.owner}</TouchableOpacity></Text>}
       />         
 </View>
 
