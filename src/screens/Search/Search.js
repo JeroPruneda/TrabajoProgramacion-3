@@ -62,12 +62,10 @@ class Search extends Component {
         <FlatList 
             data={this.state.usuarios}
             keyExtractor={(item) => item.id}
-            renderItem= {({item}) => <Text><TouchableOpacity 
-            onPress={() => this.props.navigation.navigate("PerfilDeOtros",
-            {gmail: item.data.owner,}) }>
-            {item.data.owner}</TouchableOpacity></Text>}
+            renderItem= {({item}) => <TouchableOpacity 
+            onPress={() => this.props.navigation.navigate("PerfilDeOtros", {gmail: item.data.owner, foto: item.data.foto}) }>
+            <Text>{item.data.owner}</Text></TouchableOpacity>}
         />   
-
     </View>
 
   </>

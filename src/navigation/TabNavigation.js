@@ -13,7 +13,6 @@ import React from 'react'
 export default function TabNavigation() {
   return (
     
-      
       <Tab.Navigator>
         
         <Tab.Screen name='Home'component={Nav} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }}/>
@@ -21,10 +20,6 @@ export default function TabNavigation() {
         <Tab.Screen name= "Buscador" component={Search} options = {{tabBarIcon: () => <FontAwesome name="search" size={24} color="black" />}}/>
         <Tab.Screen name='Tu Perfil' component={Profile} options= {{tabBarIcon: () =>  <FontAwesome name="user" size={24} color="black" />}}/>
        
-
     </Tab.Navigator>
-
-    
-    
   )
 }

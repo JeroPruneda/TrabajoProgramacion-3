@@ -19,6 +19,7 @@ class PerfilDeOtros extends Component {
         info: doc.data()
       })) 
     })
+
     db.collection('Posts')
     .where('owner', '==', this.props.route.params.gmail)
         .onSnapshot(
@@ -27,7 +28,7 @@ class PerfilDeOtros extends Component {
                 docs.forEach(doc => {
                     posteos.push({
                         id: doc.id,
-                        fotos: doc.data()
+                        data: doc.data().foto
                     })
                 })
 
@@ -45,17 +46,20 @@ class PerfilDeOtros extends Component {
             <Text style={styles.usuario}>Mail: {this.state.info.owner}</Text>
             <Text style={styles.usuario}>Descripción: {this.state.info.perfil}</Text>
             <Text style={styles.usuario}>Username: {this.state.info.user}</Text>
+      
             <Text>Fotos:</Text>
             <Image 
             style = {styles.camara}
             source = {{uri: this.props.route.params.foto}}
+
           />
           
           <FlatList 
           data = {this.state.fotos}
           keyExtractor = {(item) => item.id.toString()}
-          renderItem = {(item) =><Image style = {styles.camara} source = {{uri: item.fotos}}/>} 
+          renderItem = {({item}) =><Image style = {styles.camara} source = {{uri: item.data}}/>} 
           />
+
          </View>
          
         )

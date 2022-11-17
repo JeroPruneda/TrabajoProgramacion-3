@@ -69,53 +69,27 @@ import Posteo from '../../components/Posteo/Posteo'
          this.state.cargando ? <Text>Cargando</Text>
          :
          <>
-          <Text>{this.state.miPerfil.data.user}</Text>
+         <Text>{this.state.miPerfil.data.owner}</Text>
          <Text>{this.state.miPerfil.data.user}</Text>
+         <Text>{this.state.miPerfil.data.user}</Text>
+
          </>
         }
        
-         {/* <FlatList
-         data={this.state.miPerfil}
-         keyExtractor={(item)=> item.id.toString()}
-         renderItem={
-          ({item}) => 
-        <View style={styles.hijo}>
-          <Text style={styles.usuario}>
-          Nombre de Usuario: {item.data.user} 
-         </Text >
-         <Text style={styles.usuario}>
-          Descripcion de tu Perfil: {item.data.perfil}
-         </Text>
-         <Text style={styles.usuario}>
-         Tu Email: {item.data.owner}
-         </Text>
-         <Text style={styles.usuario}>
-         Cantidad de Publicaciones: {this.state.misPosteos.length}
-         </Text> */}
-           
-         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar", {id: this.state.miPerfil[0].id })}>
+         <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar", {id: this.state.miPerfil.id })}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
          </TouchableOpacity>
 
-        
-
-         
-         
-        
-       
-      
        <Text >Tus Publicaciones </Text> 
-           <FlatList
-           style= {styles.container}
-            data={this.state.misPosteos}
-            keyExtractor={(item)=> item.id.toString()}
-            renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
-            /> 
-
-        
-            <TouchableOpacity onPress={() => this.cerrarSesion()}>
-            <Text style = {styles.registro} >Cerrar Sesion</Text>
-            </TouchableOpacity>
+        <FlatList
+          style= {styles.container}
+          data={this.state.misPosteos}
+          keyExtractor={(item)=> item.id.toString()}
+          renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
+        /> 
+        <TouchableOpacity onPress={() => this.cerrarSesion()}>
+          <Text style = {styles.registro} >Cerrar Sesion</Text>
+        </TouchableOpacity>
       </View>
     )
   }
