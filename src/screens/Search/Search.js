@@ -1,8 +1,8 @@
 
 import { Text, View, StyleSheet, TextInput, Button, TouchableOpacity, Image,  FlatList} from 'react-native'
 import React, { Component} from 'react'
-import {db} from '../../firebase/config'
-import {auth} from '../../firebase/config'
+import {db, auth} from '../../firebase/config'
+
 import { Feather, Entypo } from "@expo/vector-icons";
 
 class Search extends Component {
@@ -46,32 +46,25 @@ class Search extends Component {
       console.log(this.state);
       return (
       <>
+    <View > 
+    <View > 
+    <TextInput 
+        onChangeText={ text => this.setState( {busqueda:text} )}
+        placeholder='Ingresa tu busqueda'
+        value={this.state.busqueda}>
+    </TextInput>
+    
+    <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
+    <Text style={styles.buscar}> Buscar</Text>
+    </TouchableOpacity>
 
-   
-
-   <View > 
-<View > 
-
-
-  <TextInput 
-           onChangeText={ text => this.setState( {busqueda:text} )}
-           placeholder='Ingresa tu busqueda'
-           value={this.state.busqueda}>
-  </TextInput>
-  
-
-
-  <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
-  <Text style={styles.buscar}> Buscar</Text>
-  </TouchableOpacity>
-
-</View>   
-      <FlatList 
-        data={this.state.usuarios}
-        keyExtractor={(item) => item.id}
-        renderItem= {({item}) => <Text><TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>{item.data.owner}</TouchableOpacity></Text>}
-      />         
-</View>
+    </View>   
+    <FlatList 
+    data={this.state.usuarios}
+    keyExtractor={(item) => item.id}
+    renderItem= {({item}) => <Text><TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>{item.data.owner}</TouchableOpacity></Text>}
+        />         
+    </View>
 
   </>
   )

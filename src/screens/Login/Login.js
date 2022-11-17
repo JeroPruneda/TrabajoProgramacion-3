@@ -10,7 +10,6 @@ export default class Login extends Component {
         this.state = {
             mail: "",
             pass: "",
-            usuarios: [],
             logueado: false
         }
     }
@@ -28,16 +27,7 @@ export default class Login extends Component {
         .then(resp => this.props.navigation.navigate("TabNavigation"))
         .catch(err => console.log(err))
     }
-    buscar(text){
-      let filtro = this.state.usuarios.filter(elm => elm.owner.toUpperCase().includes(text.toUpperCase())
-      ||
-      elm.user.toUpperCase().includes(text.toUpperCase())
-      )
-      this.setState({
-        mail: text,
-        usuarios: filtro
-      })
-    }
+   
   render() {
     return (
       <View style = {styles.container} >

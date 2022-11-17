@@ -11,7 +11,7 @@ import Posteo from '../../components/Posteo/Posteo'
     constructor(){
         super();
         this.state = {
-            miPerfil:[],
+            miPerfil:{},
             misPosteos: [],
             cargando: true,
         }
@@ -36,10 +36,10 @@ import Posteo from '../../components/Posteo/Posteo'
         docs =>{
              let tusDatos = []
              docs.forEach(doc => {
-                tusDatos.push({
+                tusDatos = {
                      id: doc.id,
                     data: doc.data()
-               })
+             }
             })
             this.setState({
                 miPerfil: tusDatos,
@@ -60,10 +60,21 @@ import Posteo from '../../components/Posteo/Posteo'
     }
        
   render() {
+    console.log(this.state.miPerfil);
     return (
       <View style={styles.container} >
         <Text style={styles.usuario}>Tus Datos: </Text>
-         <FlatList
+       
+        {
+         this.state.cargando ? <Text>Cargando</Text>
+         :
+         <>
+          <Text>{this.state.miPerfil.data.user}</Text>
+         <Text>{this.state.miPerfil.data.user}</Text>
+         </>
+        }
+       
+         {/* <FlatList
          data={this.state.miPerfil}
          keyExtractor={(item)=> item.id.toString()}
          renderItem={
@@ -80,7 +91,7 @@ import Posteo from '../../components/Posteo/Posteo'
          </Text>
          <Text style={styles.usuario}>
          Cantidad de Publicaciones: {this.state.misPosteos.length}
-         </Text>
+         </Text> */}
            
          <TouchableOpacity onPress={() => this.props.navigation.navigate("Editar", {id: this.state.miPerfil[0].id })}>
          <Ionicons name="settings" size={24} color="black" /><Text >EDITAR PERFIL</Text>
@@ -88,19 +99,20 @@ import Posteo from '../../components/Posteo/Posteo'
 
         
 
-         </View>
          
-        }
-       />  
-       <View style={styles.container}>
+         
+        
+       
+      
        <Text >Tus Publicaciones </Text> 
-          <FlatList
+           <FlatList
+           style= {styles.container}
             data={this.state.misPosteos}
             keyExtractor={(item)=> item.id.toString()}
             renderItem={({item}) => <Posteo navigation={this.props.navigation} id={item.id} data={item.data}/>}
-            />
+            /> 
 
-        </View>
+        
             <TouchableOpacity onPress={() => this.cerrarSesion()}>
             <Text style = {styles.registro} >Cerrar Sesion</Text>
             </TouchableOpacity>
@@ -110,10 +122,8 @@ import Posteo from '../../components/Posteo/Posteo'
 }
 const styles = StyleSheet.create({
   container:{
-  flex:1,
-    backgroundImage:`url(${back})`,
-    alignItems:'center',
-    justifyContent:'center',
+  flex:1
+  
 
    
 },container2:{

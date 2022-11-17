@@ -39,10 +39,10 @@ export default class Register extends Component {
     return (
       <View style = {styles.container}>
     <Image
-               style={styles.imagen}
-                source={require('../../../assets/esta.png')}
-                resizeMode='contain'
-            />
+      style={styles.imagen}
+      source={require('../../../assets/esta.png')}
+      resizeMode='contain'
+      />
         
        
         <View style = {styles.container}>

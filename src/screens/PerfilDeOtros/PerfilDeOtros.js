@@ -41,30 +41,23 @@ class PerfilDeOtros extends Component {
      console.log(this.state.fotos);
         return (
           
-          <View>
-            <Text>Perfiles {this.state.info.owner}</Text>
-            <Text>Descripción: {this.state.info.perfil}</Text>
-            <Text>Username: {this.state.info.user}</Text>
-            <Text>Fotosss:</Text>
+          <View style={styles.hijo}>
+            <Text style={styles.usuario}>Mail: {this.state.info.owner}</Text>
+            <Text style={styles.usuario}>Descripción: {this.state.info.perfil}</Text>
+            <Text style={styles.usuario}>Username: {this.state.info.user}</Text>
+            <Text>Fotos:</Text>
             <Image 
             style = {styles.camara}
             source = {{uri: this.props.route.params.foto}}
-            />
-            {/* CON LA FLATLIST ESTOY INTENTANDO QUE SE MUESTREN TODAS PERO NO PUEDO, ya probe con un par*/}
-            <FlatList 
+          />
+          
+          <FlatList 
           data = {this.state.fotos}
           keyExtractor = {(item) => item.id.toString()}
-          renderItem = {(item) =><Image 
-            style = {styles.camara}
-            source = {{uri: item.fotos}}
-            />} 
+          renderItem = {(item) =><Image style = {styles.camara} source = {{uri: item.fotos}}/>} 
           />
          </View>
          
-        
-       
-     
-             
         )
     }
 }
@@ -118,6 +111,24 @@ const styles = StyleSheet.create({
       borderRadius:20,
      
     },
+    hijo:{
+    
+      backgroundColor:'#E7E7E7',
+      margin:10,
+      width:400,
+      padding:10,
+      borderWidth: 1,
+      borderRadius:20
+      
+    },
+    usuario:{
+      backgroundColor:'#E7E7E7',
+      margin:10,
+      width:300,
+      borderWidth: 1,
+      borderRadius: 6,
+      padding:5
+    }
   
   
 })

@@ -16,10 +16,10 @@ export default function TabNavigation() {
       
       <Tab.Navigator>
         
-        <Tab.Screen name='Nav'component={Nav} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }}/>
-        <Tab.Screen name='SUBIR FOTO' component={Posteos} options = {{tabBarIcon: () => <FontAwesome name="camera" size={24} color="black" />}}/>
-        <Tab.Screen name= "BUSCADOR" component={Search} options = {{tabBarIcon: () => <FontAwesome name="search" size={24} color="black" />}}/>
-        <Tab.Screen name='TU PERFIL' component={Profile} options= {{tabBarIcon: () =>  <FontAwesome name="user" size={24} color="black" />}}/>
+        <Tab.Screen name='Home'component={Nav} options= {{tabBarIcon: () => <FontAwesome name="home" size={24} color="black" /> }}/>
+        <Tab.Screen name='Subir Foto' component={Posteos} options = {{tabBarIcon: () => <FontAwesome name="camera" size={24} color="black" />}}/>
+        <Tab.Screen name= "Buscador" component={Search} options = {{tabBarIcon: () => <FontAwesome name="search" size={24} color="black" />}}/>
+        <Tab.Screen name='Tu Perfil' component={Profile} options= {{tabBarIcon: () =>  <FontAwesome name="user" size={24} color="black" />}}/>
        
 
     </Tab.Navigator>

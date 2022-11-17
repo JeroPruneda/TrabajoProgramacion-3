@@ -7,7 +7,6 @@ import Profile from '../Profile/Profile'
 class Editar extends Component {
     constructor(props){
         super(props);
-        console.log(this.props);
         this.state = {
            user: "",
            perfil: ""
@@ -17,12 +16,10 @@ class Editar extends Component {
 
     // componentDidMount(){
     //   auth.currentUser.updatePassword(newPassword)
-    //     .then(function() {
+    //     .then( () => 
          
-    //     })
-    //     .catch(function(error) {
-        
-    //     })
+    //     )
+    //     .catch(() => )
 
     // }
     
@@ -38,6 +35,7 @@ class Editar extends Component {
       .then(()=>{
         {this.props.navigation.navigate("Profile")}
       })
+      .catch((error) => console.log(error))
     }
  
 
