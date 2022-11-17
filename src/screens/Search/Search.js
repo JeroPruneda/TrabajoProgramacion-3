@@ -43,27 +43,41 @@ class Search extends Component {
   }
 
   render() {
-      console.log(this.state);
+      console.log(this.state.usuarios);
       return (
       <>
     <View > 
-    <View > 
-    <TextInput 
-        onChangeText={ text => this.setState( {busqueda:text} )}
-        placeholder='Ingresa tu busqueda'
-        value={this.state.busqueda}>
-    </TextInput>
+        <TextInput 
+            onChangeText={ text => this.setState( {busqueda:text} )}
+            placeholder='Ingresa tu busqueda'
+            value={this.state.busqueda}>
+        </TextInput>
     
-    <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
-    <Text style={styles.buscar}> Buscar</Text>
-    </TouchableOpacity>
-
+        <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
+            <Text style={styles.buscar}> Buscar</Text>
+        </TouchableOpacity>
     </View>   
-    <FlatList 
-    data={this.state.usuarios}
-    keyExtractor={(item) => item.id}
-    renderItem= {({item}) => <Text><TouchableOpacity onPress={() => this.props.navigation.navigate("PerfilDeOtros", {id: this.props.id}) }>{item.data.owner}</TouchableOpacity></Text>}
-        />         
+
+    <View >     
+        <TextInput 
+            onChangeText={ text => this.setState( {busqueda:text} )}
+            placeholder='Ingresa tu busqueda'
+            value={this.state.busqueda}>
+        </TextInput>
+
+        <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
+            <Text style={styles.buscar}> Buscar</Text>
+        </TouchableOpacity>
+
+        <FlatList 
+            data={this.state.usuarios}
+            keyExtractor={(item) => item.id}
+            renderItem= {({item}) => <Text><TouchableOpacity 
+            onPress={() => this.props.navigation.navigate("PerfilDeOtros",
+            {gmail: item.data.owner,}) }>
+            {item.data.owner}</TouchableOpacity></Text>}
+        />   
+
     </View>
 
   </>
