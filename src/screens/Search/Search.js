@@ -59,16 +59,6 @@ class Search extends Component {
     </View>   
 
     <View >     
-        <TextInput 
-            onChangeText={ text => this.setState( {busqueda:text} )}
-            placeholder='Ingresa tu busqueda'
-            value={this.state.busqueda}>
-        </TextInput>
-
-        <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
-            <Text style={styles.buscar}> Buscar</Text>
-        </TouchableOpacity>
-
         <FlatList 
             data={this.state.usuarios}
             keyExtractor={(item) => item.id}
