@@ -70,7 +70,7 @@ class Posteo extends Component {
         db.collection('Posts')
         .doc(this.props.id)
         .delete()
-        .then(()=> {this.props.navigation.navigate('Profile')})
+        .then(()=> {this.props.navigation.navigate('Home')})
         .catch(err=> console.log(err))
     }
 

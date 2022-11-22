@@ -52,7 +52,7 @@ class Posteos extends Component {
                     keyboardType='default'
                     style={styles.input}
                     />
-                    <TouchableOpacity onPress={()=> this.subirPost(this.state.descripcion)}>
+                    <TouchableOpacity onPress={()=> this.subirPost()}>
                         <Text>Mandar Posteo</Text>
                     </TouchableOpacity>
                 </>
