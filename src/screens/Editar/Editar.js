@@ -14,17 +14,6 @@ class Editar extends Component {
         }
     }
 
-    // componentDidMount(){
-    //   auth.currentUser.updatePassword(newPassword)
-    //     .then( () => 
-         
-    //     )
-    //     .catch(() => )
-
-    // }
-    
-  
-
     actualizar(){
       db.collection("Users")
       .doc(this.props.route.params.id)
@@ -78,8 +67,6 @@ const styles = StyleSheet.create({
        margin: 10,
        fontFamily:"times new roman",
        fontSize:40,
-       
-    
        
       },
       input: {
