@@ -37,7 +37,7 @@ import Posteo from '../../components/Posteo/Posteo'
              let tusDatos = []
              docs.forEach(doc => {
                 tusDatos = {
-                     id: doc.id,
+                    id: doc.id,
                     data: doc.data()
              }
             })
