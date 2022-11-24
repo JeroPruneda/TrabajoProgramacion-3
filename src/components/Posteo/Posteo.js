@@ -81,7 +81,7 @@ class Posteo extends Component {
          {
             
             this.state.miPosteo  ? 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile", {id: this.props.id}) }>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile") }>
             <Text style={styles.nombre}>{this.props.data.owner}</Text>
             </TouchableOpacity>
             :
