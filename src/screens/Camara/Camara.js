@@ -64,7 +64,7 @@ export default class Camara extends Component {
             <Camera 
                     style={styles.camara}
                     type={Camera.Constants.Type.back}
-                    ref={metodosDelComponente => this.metodosDeCamara = metodosDelComponente}
+                    ref={reference => this.metodosDeCamara = reference}
                 />
             <TouchableOpacity onPress={() => this.sacarFoto()}>
                 <Text>Sacar foto</Text>
